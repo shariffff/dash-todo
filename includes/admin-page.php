@@ -1,9 +1,9 @@
 <?php
 
 namespace DashTodo {
-	add_action('init', __NAMESPACE__ . '\\dash_todo_register_post_type', 0);
+	add_action('init', __NAMESPACE__ . '\\todo_post_type', 0);
 
-	function dash_todo_register_post_type()
+	function todo_post_type()
 	{
 		register_post_type(
 			'todo',
@@ -38,18 +38,9 @@ namespace DashTodo {
 	}
 
 
-	/**
-	 * Includes asset.
-	 *
-	 * @return void
-	 */
 	function wp_enqueue_scripts()
 	{
 		enqueue_scripts_from_asset_file('settings', DASH_TODO_PLUGIN_FILE);
-
-		wp_localize_script('dash-todo-settings', 'DASH_TODO', apply_filters('DASH_TODO_variables', []));
-
-		// wp_set_script_translations( 'dash-todo-core', 'dash-todo', plugin_dir_path( DASH_TODO_PLUGIN_FILE ) . 'languages/' ); ?
 	}
 
 	function admin_page_load()
@@ -78,12 +69,7 @@ namespace DashTodo {
 		];
 		$random_line =  array_rand($lines);
 
-		return "<small style='float: right; opacity: 0.4'>$lines[$random_line]</small>";
-	}
-
-	function admin_footer_text()
-	{
-		return '';
+		return "<small style='float: right; opacity: 0.3'>$lines[$random_line]</small>";
 	}
 
 	function admin_page()
@@ -97,5 +83,15 @@ namespace DashTodo {
 		<div id="ui-loading">Loading...</div>
 		<div id="app"></div>
 		HTML;
+	}
+
+	add_filter('plugin_action_links_' . plugin_basename(dirname(__FILE__, 2)) . '/dash-todo.php', __NAMESPACE__ . '\\action_links');
+
+	function action_links($links)
+	{
+		$todo_link = array(
+			'<a href="' . admin_url('index.php?page=todo') . '">Todo</a>',
+		);
+		return array_merge($todo_link, $links);
 	}
 }
