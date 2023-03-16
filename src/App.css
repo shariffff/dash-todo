@@ -1,3 +1,6 @@
+body.dash-todo .update-nag.notice.notice-warning.inline {
+	display: none;
+}
 .dash-todo-header {
 	background: #fff;
 	border-bottom: 1px solid #dcdcde;
