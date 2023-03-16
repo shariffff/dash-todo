@@ -11,7 +11,7 @@
  * Version:           0.0.1
  * Requires at least: 5.8
  * Tested up to:      6.1.1
- * Requires PHP:      8.0
+ * Requires PHP:      7.4
  */
 
 namespace DashTodo;
@@ -45,17 +45,19 @@ function create_demo_todo_items()
 		[
 			'post_title'    => 'Install and Activate Dash Todo',
 			'post_status'   => 'publish',
+			'post_type'   => 'todo'
 		],
 		[
 			'post_title'    => 'Create a new Todo',
 			'post_status'   => 'pending',
+			'post_type'   => 'todo'
 
 		]
 	];
 	if (!$installed) {
 		update_option('dash_todo_installed', time());
 		foreach ($initial_todo_items as $item) {
-			wp_insert_post(['post_type'   => 'todo', ...$item]);
+			wp_insert_post($item);
 		}
 	}
 }
