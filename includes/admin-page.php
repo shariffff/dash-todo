@@ -86,10 +86,7 @@ function update_footer()
 
 function admin_page()
 {
-	echo <<<HTML
-		<noscript><p>Enable JavaScript to visit this page</p></noscript>
-		<div id="app"></div>
-		HTML;
+	echo '<noscript>Enable JavaScript to visit this page</noscript><div id="app"></div>';
 }
 
 add_filter('plugin_action_links_' . plugin_basename(dirname(__FILE__, 2)) . '/dash-todo.php', $n('action_links'));
