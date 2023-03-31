@@ -28,7 +28,7 @@ export default function ({ title, id, status, deleted }) {
 	}, [isChecked, setChecked]);
 	const deleteTodo = () => {
 		apiFetch({
-			path: `/wp/v2/todo/${id}`,
+			path: `/wp/v2/todo/${id}?force=true`,
 			method: 'DELETE',
 		})
 			.then(() => {
