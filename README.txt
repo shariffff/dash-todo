@@ -1,5 +1,5 @@
 === Dash Todo ===
-Contributors: smeunus
+Contributors: smeunus,ashikrnhq04
 Donate link: https://sharifff.com/
 Tags: todo, dashboard
 Requires at least: 5.9
@@ -32,8 +32,14 @@ An answer to that question.
 
 = 1.0 =
 * Initial release
+= 1.0.1 =
+* Delete todo items permanently, previously they were in trash
+* On Uninstall, delete all todo items and delete option
+* Fix delete button alignment
 
 == Upgrade Notice ==
 
 = 1.0 =
 Initial release
+= 1.0.1 =
+Bug fix
