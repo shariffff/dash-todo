@@ -46,6 +46,7 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 }
 .single--todo:hover .delete {
 	display: inherit;
+	margin-bottom: 8px;
 }
 
 
