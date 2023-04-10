@@ -27,7 +27,6 @@ function todo_post_type()
 }
 
 add_action('admin_menu', $n('admin_menu'), 100);
-
 function admin_menu()
 {
 	global $n;
@@ -81,7 +80,7 @@ function update_footer()
 	];
 	$random_line =  array_rand($inspiringLines);
 
-	return "<small style='float: right; opacity: 0.5'>$inspiringLines[$random_line]</small>";
+	return "<small class='inspiring-lines' style='float: right; opacity: 0.5'>$inspiringLines[$random_line]</small>";
 }
 
 function admin_page()

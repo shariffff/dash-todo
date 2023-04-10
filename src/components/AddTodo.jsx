@@ -1,11 +1,4 @@
-import {
-	Button,
-	Card,
-	CardBody,
-	Flex,
-	FlexBlock,
-	TextControl,
-} from '@wordpress/components';
+import { Card, CardBody, TextControl } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 
@@ -24,28 +17,30 @@ export default function ({ created }) {
 			})
 			.catch((err) => console.log(err?.message));
 	};
+	const handleKeyDown = (event) => {
+		if (event.key === 'Enter') {
+			handleFormSubmit(event);
+		}
+	};
+
+	const handleFormSubmit = (event) => {
+		event.preventDefault();
+		createTodo();
+	};
 	return (
 		<Card>
 			<CardBody>
-				<Flex>
-					<FlexBlock>
-						<TextControl
-							label={'Todo item'}
-							onChange={(value) => setTodo(value)}
-							value={todo}
-						/>
-					</FlexBlock>
-
-					<Button
-						isSmall={true}
-						style={{ height: 30, marginTop: 14 }}
-						variant="secondary"
-						onClick={createTodo}
-						disabled={Boolean(!todo)}
-					>
-						Add
-					</Button>
-				</Flex>
+				<form onSubmit={handleFormSubmit}>
+					<TextControl
+						autoFocus
+						label={'Add Todo item'}
+						hideLabelFromVision
+						placeholder="Type here and Press ENTER to create a todo item."
+						onChange={(value) => setTodo(value)}
+						value={todo}
+						onKeyDown={handleKeyDown}
+					/>
+				</form>
 			</CardBody>
 		</Card>
 	);
