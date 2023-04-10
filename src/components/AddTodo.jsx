@@ -25,7 +25,9 @@ export default function ({ created }) {
 
 	const handleFormSubmit = (event) => {
 		event.preventDefault();
-		createTodo();
+		if (todo.trim().length !== 0) {
+			createTodo();
+		}
 	};
 	return (
 		<Card>
@@ -35,7 +37,7 @@ export default function ({ created }) {
 						autoFocus
 						label={'Add Todo item'}
 						hideLabelFromVision
-						placeholder="Type here and Press ENTER to create a todo item."
+						placeholder="Type here and press Enter ↵"
 						onChange={(value) => setTodo(value)}
 						value={todo}
 						onKeyDown={handleKeyDown}

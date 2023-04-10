@@ -11,7 +11,7 @@ function enqueue_scripts_from_asset_file($name)
 
 
 		if (in_array('wp-react-refresh-runtime', $script_asset['dependencies'], true) && !constant('SCRIPT_DEBUG')) {
-			wp_die(esc_html__('SCRIPT_DEBUG should be true to run HMR.', 'dash-todo'));
+			unset($script_asset['dependencies']['wp-react-refresh-runtime']);
 		}
 
 		wp_enqueue_script("dash-todo-$name", plugins_url("build/$name.js", DASH_TODO_PLUGIN_FILE), $script_dependencies, $script_asset['version'], true);

@@ -20,8 +20,7 @@
   },
   "devDependencies": {
     "@wordpress/env": "^5.13.0",
-    "@wordpress/scripts": "26.0.0",
-    "husky": "^8.0.3"
+    "@wordpress/scripts": "26.0.0"
   },
   "browserslist": "last 2 versions, Firefox ESR, not dead, not op_mini all, not ie <= 11"
 }
