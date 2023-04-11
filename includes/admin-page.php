@@ -49,6 +49,7 @@ function wp_enqueue_scripts()
 	enqueue_scripts_from_asset_file('index');
 }
 
+
 function admin_page_load()
 {
 	global $n;
@@ -97,3 +98,23 @@ function action_links($links)
 	);
 	return array_merge($todo_link, $links);
 }
+
+add_action('wp_dashboard_setup', $n('dash_todo_admin_widget'));
+function dash_todo_admin_widget()
+{
+	global $n;
+	wp_add_dashboard_widget(
+		'dash_todo_admin_widget',
+		esc_html__('Todo', 'dash-todo'),
+		$n('admin_page')
+	);
+}
+
+add_action('admin_enqueue_scripts', function () {
+
+	$hidden_widgets = get_user_option('metaboxhidden_dashboard') ?? [];
+	if (in_array('dash_todo_admin_widget', $hidden_widgets)) {
+		return;
+	}
+	enqueue_scripts_from_asset_file('index');
+});

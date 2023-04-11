@@ -45,3 +45,13 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 	display: inherit;
 	margin-bottom: 8px;
 }
+
+#dash_todo_admin_widget .dash-todo-header {
+	display: none;
+}
+#dash_todo_admin_widget .components-card {
+	box-shadow: none;
+}
+#dash_todo_admin_widget #app:empty:before {
+	content: 'Please reload to see the content';
+}
