@@ -11,7 +11,7 @@ export default function () {
 
 	useEffect(() => {
 		apiFetch({
-			path: '/wp/v2/todo?status=pending,publish&per_page=100&orderby=id',
+			path: '/wp/v2/todo?status=pending,publish&per_page=100&orderby=id&context=edit',
 		})
 			.then((posts) => {
 				setTodoItems(posts);
@@ -20,12 +20,9 @@ export default function () {
 			.catch((error) => console.error(error?.message));
 	}, [reFetch, setReFetch, loading, setLoading]);
 
-	const created = () => {
-		setReFetch(!reFetch);
-	};
-	const deleted = () => {
-		setReFetch(!reFetch);
-	};
+	const created = () => setReFetch(!reFetch);
+	const deleted = () => setReFetch(!reFetch);
+
 	return (
 		<div className="dash-todo-layout">
 			<div className="dash-todo-header">

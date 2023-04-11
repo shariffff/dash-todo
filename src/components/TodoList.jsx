@@ -13,7 +13,7 @@ export default function ({ items, deleted }) {
 					{items.map(({ id, title, status }) => (
 						<TodoItem
 							key={id}
-							title={title.rendered}
+							title={title.raw ?? title.rendered}
 							id={id}
 							status={status}
 							deleted={deleted}
