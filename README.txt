@@ -29,6 +29,7 @@ An answer to that question.
 == Screenshots ==
 
 1. Screenshot of Dash Todo plugins interface.
+2. Screenshot of Dash Todo plugins widget.
 
 
 == Changelog ==
