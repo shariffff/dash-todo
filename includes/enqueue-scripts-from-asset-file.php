@@ -10,7 +10,7 @@ function enqueue_scripts_from_asset_file($name)
 		$script_dependencies = $script_asset['dependencies'] ?? [];
 
 
-		if (in_array('wp-react-refresh-runtime', $script_asset['dependencies'], true) && !constant('SCRIPT_DEBUG')) {
+		if (in_array('wp-react-refresh-runtime', $script_asset['dependencies'], true) && !defined('SCRIPT_DEBUG')) {
 			unset($script_asset['dependencies']['wp-react-refresh-runtime']);
 		}
 

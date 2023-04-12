@@ -5,7 +5,7 @@
   "homepage": "https://github.com/shariffff/dash-todo",
   "scripts": {
     "start": "wp-scripts start src/index.js --output-path=build",
-    "hot": "wp-scripts start src/index.js --output-path=build --hot --allowed-hosts all",
+    "hot": "wp-scripts start src/index.js --output-path=build  --hot --allowed-hosts all --no-live-reload",
     "build": "wp-scripts build src/index.js --output-path=build",
     "format": "wp-scripts format ./src",
     "plugin-zip": "wp-scripts plugin-zip",

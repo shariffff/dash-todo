@@ -6,7 +6,6 @@ export default function ({ created }) {
 	const [todo, setTodo] = useState('');
 
 	const createTodo = () => {
-		console.log(todo);
 		apiFetch({
 			path: '/wp/v2/todo',
 			method: 'POST',

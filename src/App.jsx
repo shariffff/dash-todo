@@ -9,19 +9,32 @@ export default function () {
 	const [reFetch, setReFetch] = useState(false);
 	const [loading, setLoading] = useState(true);
 
+	const query = new URLSearchParams({
+		_fields: 'id,title,status',
+		status: 'pending,publish',
+		per_page: 100,
+		orderby: 'id',
+		context: 'edit',
+	});
+
 	useEffect(() => {
 		apiFetch({
-			path: '/wp/v2/todo?status=pending,publish&per_page=100&orderby=id&context=edit',
+			path: `/wp/v2/todo?${query}`,
 		})
 			.then((posts) => {
+				console.log('fetching');
 				setTodoItems(posts);
 				setLoading(false);
 			})
 			.catch((error) => console.error(error?.message));
-	}, [reFetch, setReFetch, loading, setLoading]);
+	}, [reFetch, setReFetch]);
 
-	const created = () => setReFetch(!reFetch);
-	const deleted = () => setReFetch(!reFetch);
+	const created = () => {
+		setReFetch(!reFetch);
+	};
+	const deleted = () => {
+		setReFetch(!reFetch);
+	};
 
 	return (
 		<div className="dash-todo-layout">

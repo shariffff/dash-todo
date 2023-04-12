@@ -1,1 +1,63 @@
-body.dash-todo .update-nag.notice.notice-warning.inline{display:none}.dash-todo-header{background:#fff;border-bottom:1px solid #dcdcde;margin:0 0 2rem;text-align:center}.dash-todo-header .dash-todo-title-section{align-items:center;clear:both;display:flex;justify-content:center;padding-top:8px}.dash-todo-header .dash-todo-title-section h1{display:inline-block;font-size:23px;font-weight:600;line-height:1.3;margin:0 .8rem 1rem;padding:9px 0 4px}.dash-todo #wpcontent,.dash-todo.auto-fold #wpcontent{padding-left:0}.dash-todo .dash-todo-layout .dash-todo-layout-body{margin:0 auto;max-width:800px}.no-js{text-align:center}.completed label{color:gray;text-decoration:line-through}.single--todo .delete{display:none}.single--todo:hover .delete{display:inherit;margin-bottom:8px}#dash_todo_admin_widget .dash-todo-header{display:none}#dash_todo_admin_widget .components-card{box-shadow:none}#dash_todo_admin_widget #app:empty:before{content:"Please reload to see the content"}
+/*!*****************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/App.css ***!
+  \*****************************************************************************************************************************************************************/
+body.dash-todo .update-nag.notice.notice-warning.inline {
+	display: none;
+}
+.dash-todo-header {
+	background: #fff;
+	border-bottom: 1px solid #dcdcde;
+	margin: 0 0 2rem;
+	text-align: center;
+}
+.dash-todo-header .dash-todo-title-section {
+	align-items: center;
+	clear: both;
+	display: flex;
+	justify-content: center;
+	padding-top: 8px;
+}
+.dash-todo-header .dash-todo-title-section h1 {
+	display: inline-block;
+	font-size: 23px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin: 0 0.8rem 1rem;
+	padding: 9px 0 4px;
+}
+.dash-todo #wpcontent,
+.dash-todo.auto-fold #wpcontent {
+	padding-left: 0;
+}
+.dash-todo .dash-todo-layout .dash-todo-layout-body {
+	margin: 0 auto;
+	max-width: 800px;
+}
+.no-js {
+	text-align: center;
+}
+.completed label {
+	color: gray;
+	text-decoration: line-through;
+}
+
+.single--todo .delete {
+	display: none;
+}
+.single--todo:hover .delete {
+	display: inherit;
+	margin-bottom: 8px;
+}
+
+#dash_todo_admin_widget .dash-todo-header {
+	display: none;
+}
+#dash_todo_admin_widget .components-card {
+	box-shadow: none;
+}
+#dash_todo_admin_widget #app:empty:before {
+	content: 'Please reload to see the content';
+}
+
+
+/*# sourceMappingURL=index.css.map*/

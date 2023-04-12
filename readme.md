@@ -27,23 +27,24 @@ An answer to that question.
 
 1. Screenshot of Dash Todo plugins interface.
 
-
 == Changelog ==
 
 = 1.0 =
-* Initial release
-= 1.0.1 =
-* Delete todo items permanently, previously they were in trash
-* On Uninstall, delete all todo items and delete option
-* Fix delete button alignment
-= 1.0.2 =
-* Dashboard widget added
-* Add todo item by pressing ENTER
-* Render raw title
+
+- Initial release
+  = 1.0.1 =
+- Delete todo items permanently, previously they were in trash
+- On Uninstall, delete all todo items and delete option
+- Fix delete button alignment
+  = 1.0.2 =
+- Dashboard widget added
+- Add todo item by pressing ENTER
+- Render raw title
 
 = 1.0.3 =
-* Performance
-* Bug fix
+
+- Performance
+- Bug fix
 
 == Upgrade Notice ==
 

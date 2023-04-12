@@ -86,7 +86,11 @@ function update_footer()
 
 function admin_page()
 {
-	echo '<noscript>Enable JavaScript to visit this page</noscript><div id="app"></div>';
+	echo '<noscript>Enable JavaScript to visit this page</noscript><div id="TodoApp"></div>';
+	if (!wp_script_is('dash-todo-index')) {
+
+		_e('Please reload to see the todo items.', 'dash-todo');
+	}
 }
 
 add_filter('plugin_action_links_' . plugin_basename(dirname(__FILE__, 2)) . '/dash-todo.php', $n('action_links'));
