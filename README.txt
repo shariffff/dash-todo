@@ -15,6 +15,9 @@ A Todo management plugin for WordPress site admins. Stay consistent and never fo
 
 The Todo Plugin is a tool designed to enhance productivity and task management within the WordPress admin area. This plugin allows admins to easily create and manage tasks, keeping track of what needs to be done.
 
+You can manage the Todo from *Dashboard -> Todo* or from the *Dashboard widget*.
+Note: If you toggle the *Todo widget*, a page reload is required. This is for Performance purpose.
+
 == Frequently Asked Questions ==
 
 = Can I contribute to this plugin? =

@@ -46,7 +46,7 @@ export default function ({ title, id, status, deleted }) {
 			/>
 
 			<Button style={{ height: 20 }} className="delete" onClick={deleteTodo}>
-				<Icon icon="edit" size={18} style={{ color: 'gray' }}></Icon>
+				<Icon icon="trash" size={15} style={{ color: 'gray' }}></Icon>
 			</Button>
 		</HStack>
 	);
