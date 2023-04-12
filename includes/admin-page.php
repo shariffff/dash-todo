@@ -116,8 +116,8 @@ function dash_todo_admin_widget()
 
 add_action('admin_enqueue_scripts', function () {
 
-	$hidden_widgets = get_user_option('metaboxhidden_dashboard') ?? [];
-	if (in_array('dash_todo_admin_widget', $hidden_widgets)) {
+	$hidden_widgets = get_user_option('metaboxhidden_dashboard');
+	if (is_array($hidden_widgets) && in_array('dash_todo_admin_widget', $hidden_widgets)) {
 		return;
 	}
 	enqueue_scripts_from_asset_file('index');
