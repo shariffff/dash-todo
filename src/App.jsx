@@ -4,6 +4,7 @@ import TodoList from './components/TodoList';
 import './App.css';
 import AddTodo from './components/AddTodo';
 import LoadingScreen from './components/Loading';
+
 export default function () {
 	const [todoItems, setTodoItems] = useState([]);
 	const [reFetch, setReFetch] = useState(false);
@@ -14,7 +15,6 @@ export default function () {
 		status: 'pending,publish',
 		per_page: 100,
 		orderby: 'id',
-		context: 'edit',
 	});
 
 	useEffect(() => {

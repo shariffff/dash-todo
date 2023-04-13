@@ -3,22 +3,23 @@ import {
 	Card,
 	CardBody,
 } from '@wordpress/components';
+import { decodeEntities } from '@wordpress/html-entities';
 import TodoItem from './TodoItem';
 
-export default function ({ items, deleted }) {
+export default function ( { items, deleted } ) {
 	return (
 		<Card>
 			<CardBody>
 				<VStack>
-					{items.map(({ id, title, status }) => (
+					{ items.map( ( { id, title, status } ) => (
 						<TodoItem
-							key={id}
-							title={title.raw ?? title.rendered}
-							id={id}
-							status={status}
-							deleted={deleted}
+							key={ id }
+							title={ decodeEntities( title.rendered ) }
+							id={ id }
+							status={ status }
+							deleted={ deleted }
 						/>
-					))}
+					) ) }
 				</VStack>
 			</CardBody>
 		</Card>

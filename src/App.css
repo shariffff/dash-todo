@@ -52,6 +52,3 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 #dash_todo_admin_widget .components-card {
 	box-shadow: none;
 }
-#dash_todo_admin_widget #app:empty:before {
-	content: 'Please reload to see the content';
-}
