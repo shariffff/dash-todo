@@ -1,6 +1,15 @@
 /*!*****************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/App.css ***!
   \*****************************************************************************************************************************************************************/
+:root {
+	--wp-admin-theme-color: #3858e9;
+	--wp-admin-theme-color--rgb: 56, 88, 233;
+	--wp-admin-theme-color-darker-10: #2145e6;
+	--wp-admin-theme-color-darker-10--rgb: 33, 69, 230;
+	--wp-admin-theme-color-darker-20: #183ad6;
+	--wp-admin-theme-color-darker-20--rgb: 24, 58, 214;
+	--wp-admin-border-width-focus: 2px;
+}
 body.dash-todo .update-nag.notice.notice-warning.inline {
 	display: none;
 }
@@ -35,6 +44,9 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 }
 .no-js {
 	text-align: center;
+}
+body.dash-todo .components-checkbox-control {
+	max-width: calc(100% - 36px);
 }
 .completed label {
 	color: gray;

@@ -4,7 +4,7 @@ Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 5.9
 Tested up to: 6.2
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -22,9 +22,6 @@ Note: If you toggle the *Todo widget*, a page reload is required. This is for Pe
 
 = Can I contribute to this plugin? =
 Sure, I'm managing the plugin here: https://github.com/shariffff/dash-todo
-Also, feel free to submit any idea.
-
-An answer to that question.
 
 == Screenshots ==
 

@@ -484,10 +484,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_TodoList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/TodoList */ "./src/components/TodoList.jsx");
-/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
-/* harmony import */ var _components_AddTodo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/AddTodo */ "./src/components/AddTodo.jsx");
-/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Loading */ "./src/components/Loading.jsx");
+/* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
+/* harmony import */ var _components_AddTodo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/AddTodo */ "./src/components/AddTodo.jsx");
+/* harmony import */ var _components_Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Loading */ "./src/components/Loading.jsx");
+/* harmony import */ var _components_TodoList__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/TodoList */ "./src/components/TodoList.jsx");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 /* provided dependency */ var __react_refresh_error_overlay__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/overlay/index.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "react-refresh/runtime");
@@ -504,19 +504,17 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
   const [reFetch, setReFetch] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [loading, setLoading] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   const query = new URLSearchParams({
-    _fields: 'id,title,status',
-    status: 'pending,publish',
+    _fields: "id,title,status,menu_order",
+    status: "pending,publish",
     per_page: 100,
-    orderby: 'id'
-    // context: 'edit',
+    orderby: "menu_order"
   });
-
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_1___default()({
       path: `/wp/v2/todo?${query}`
     }).then(posts => {
-      console.log('fetching');
       setTodoItems(posts);
+      setLoading(false);
       setLoading(false);
     }).catch(error => console.error(error?.message));
   }, [reFetch, setReFetch]);
@@ -534,9 +532,9 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
     className: "dash-todo-title-section"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Todo"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "dash-todo-layout-body hide-if-no-js"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AddTodo__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AddTodo__WEBPACK_IMPORTED_MODULE_3__["default"], {
     created: created
-  }), loading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Loading__WEBPACK_IMPORTED_MODULE_5__["default"], null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_TodoList__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }), loading ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Loading__WEBPACK_IMPORTED_MODULE_4__["default"], null) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_TodoList__WEBPACK_IMPORTED_MODULE_5__["default"], {
     items: todoItems,
     deleted: deleted
   })));
@@ -605,6 +603,7 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
     created
   } = _ref;
   const [todo, setTodo] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)('');
+  const [showForm, setShowForm] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const createTodo = () => {
     _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
       path: '/wp/v2/todo',
@@ -629,13 +628,22 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
       createTodo();
     }
   };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Card, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CardBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
-    onSubmit: handleFormSubmit
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Card, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.CardBody, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
+    __experimentalIsFocusable: true,
+    icon: 'plus-alt2',
+    iconPosition: "left",
+    onClick: () => setShowForm(!showForm),
+    variant: "secondary"
+  }, "Add New"), showForm && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    onSubmit: handleFormSubmit,
+    style: {
+      marginTop: 10
+    }
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
     autoFocus: true,
     label: 'Add Todo item',
     hideLabelFromVision: true,
-    placeholder: "Type here and press Enter \u21B5",
+    placeholder: "Type here and press Enter \u21B5 hi",
     onChange: value => setTodo(value),
     value: todo,
     onKeyDown: handleKeyDown
@@ -765,6 +773,10 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
     status,
     deleted
   } = _ref;
+  const [isVisible, setIsVisible] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const toggleVisible = () => {
+    setIsVisible(state => !state);
+  };
   const isMounted = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useRef)(false);
   const [isChecked, setChecked] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(status === 'publish');
   const setStatus = isChecked ? 'publish' : 'pending';
@@ -882,13 +894,13 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
       title,
       status
     } = _ref2;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_TodoItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_TodoItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
       key: id,
       title: (0,_wordpress_html_entities__WEBPACK_IMPORTED_MODULE_2__.decodeEntities)(title.rendered),
       id: id,
       status: status,
       deleted: deleted
-    });
+    }));
   }))));
 }
 
@@ -946,7 +958,7 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
 
 
 const container = document.getElementById('TodoApp');
-(0,react_dom__WEBPACK_IMPORTED_MODULE_1__.render)((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), container);
+react_dom__WEBPACK_IMPORTED_MODULE_1___default().render((0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), container);
 
 const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
 const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
@@ -2053,7 +2065,7 @@ module.exports = function (V, P) {
 /*!*******************************************************!*\
   !*** ./node_modules/core-js-pure/internals/global.js ***!
   \*******************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 var check = function (it) {
   return it && it.Math == Math && it;
@@ -2068,7 +2080,7 @@ module.exports =
   check(typeof self == 'object' && self) ||
   check(typeof __webpack_require__.g == 'object' && __webpack_require__.g) ||
   // eslint-disable-next-line no-new-func -- fallback
-  (function () { return this; })() || Function('return this')();
+  (function () { return this; })() || this || Function('return this')();
 
 
 /***/ }),
@@ -3345,10 +3357,10 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.29.1',
+  version: '3.30.2',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2014-2023 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.29.1/LICENSE',
+  license: 'https://github.com/zloirock/core-js/blob/v3.30.2/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 
@@ -3600,13 +3612,18 @@ module.exports = function (input) {
 /* eslint-disable es/no-symbol -- required for testing */
 var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js-pure/internals/engine-v8-version.js");
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js-pure/internals/fails.js");
+var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js-pure/internals/global.js");
+
+var $String = global.String;
 
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   var symbol = Symbol();
   // Chrome 38 Symbol has incorrect toString conversion
   // `get-own-property-symbols` polyfill symbols converted to object are not Symbol instances
-  return !String(symbol) || !(Object(symbol) instanceof Symbol) ||
+  // nb: Do not call `String` directly to avoid this being optimized out to `symbol+''` which will,
+  // of course, fail.
+  return !$String(symbol) || !(Object(symbol) instanceof Symbol) ||
     // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
     !Symbol.sham && V8_VERSION && V8_VERSION < 41;
 });
@@ -4564,6 +4581,45 @@ __webpack_require__(/*! ../modules/web.url-search-params.constructor */ "./node_
 /***/ (() => {
 
 // empty
+
+
+/***/ }),
+
+/***/ "./node_modules/core-js-pure/modules/web.url.can-parse.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/core-js-pure/modules/web.url.can-parse.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js-pure/internals/export.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js-pure/internals/get-built-in.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js-pure/internals/fails.js");
+var validateArgumentsLength = __webpack_require__(/*! ../internals/validate-arguments-length */ "./node_modules/core-js-pure/internals/validate-arguments-length.js");
+var toString = __webpack_require__(/*! ../internals/to-string */ "./node_modules/core-js-pure/internals/to-string.js");
+var USE_NATIVE_URL = __webpack_require__(/*! ../internals/url-constructor-detection */ "./node_modules/core-js-pure/internals/url-constructor-detection.js");
+
+var URL = getBuiltIn('URL');
+
+// https://github.com/nodejs/node/issues/47505
+// https://github.com/denoland/deno/issues/18893
+var THROWS_WITHOUT_ARGUMENTS = USE_NATIVE_URL && fails(function () {
+  URL.canParse();
+});
+
+// `URL.canParse` method
+// https://url.spec.whatwg.org/#dom-url-canparse
+$({ target: 'URL', stat: true, forced: !THROWS_WITHOUT_ARGUMENTS }, {
+  canParse: function canParse(url) {
+    var length = validateArgumentsLength(arguments.length, 1);
+    var urlString = toString(url);
+    var base = length < 2 || arguments[1] === undefined ? undefined : toString(arguments[1]);
+    try {
+      return !!new URL(urlString, base);
+    } catch (error) {
+      return false;
+    }
+  }
+});
 
 
 /***/ }),
@@ -5681,6 +5737,7 @@ module.exports = path.URLSearchParams;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(/*! ../modules/web.url */ "./node_modules/core-js-pure/modules/web.url.js");
+__webpack_require__(/*! ../modules/web.url.can-parse */ "./node_modules/core-js-pure/modules/web.url.can-parse.js");
 __webpack_require__(/*! ../modules/web.url.to-json */ "./node_modules/core-js-pure/modules/web.url.to-json.js");
 __webpack_require__(/*! ../modules/web.url-search-params */ "./node_modules/core-js-pure/modules/web.url-search-params.js");
 __webpack_require__(/*! ../modules/web.url-search-params.size */ "./node_modules/core-js-pure/modules/web.url-search-params.size.js");
@@ -6949,7 +7006,7 @@ __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1681382541884
+      // 1685028171257
       var cssReload = __webpack_require__(/*! ../node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -7176,14 +7233,14 @@ var WebSocketClient = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=false":
+/***/ "./node_modules/webpack-dev-server/client/index.js?protocol=wss%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true":
 /*!**************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=false ***!
+  !*** ./node_modules/webpack-dev-server/client/index.js?protocol=wss%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true ***!
   \**************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-var __resourceQuery = "?protocol=ws%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=false";
+var __resourceQuery = "?protocol=wss%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! webpack/hot/log.js */ "./node_modules/webpack/hot/log.js");
 /* harmony import */ var webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(webpack_hot_log_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -7213,11 +7270,19 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
 
 
 /**
+ * @typedef {Object} OverlayOptions
+ * @property {boolean | (error: Error) => boolean} [warnings]
+ * @property {boolean | (error: Error) => boolean} [errors]
+ * @property {boolean | (error: Error) => boolean} [runtimeErrors]
+ * @property {string} [trustedTypesPolicyName]
+ */
+
+/**
  * @typedef {Object} Options
  * @property {boolean} hot
  * @property {boolean} liveReload
  * @property {boolean} progress
- * @property {boolean | { warnings?: boolean, errors?: boolean, trustedTypesPolicyName?: string }} overlay
+ * @property {boolean | OverlayOptions} overlay
  * @property {string} [logging]
  * @property {number} [reconnect]
  */
@@ -7228,6 +7293,23 @@ function _toPrimitive(input, hint) { if (typeof input !== "object" || input === 
  * @property {string} currentHash
  * @property {string} [previousHash]
  */
+
+/**
+ * @param {boolean | { warnings?: boolean | string; errors?: boolean | string; runtimeErrors?: boolean | string; }} overlayOptions
+ */
+var decodeOverlayOptions = function decodeOverlayOptions(overlayOptions) {
+  if (typeof overlayOptions === "object") {
+    ["warnings", "errors", "runtimeErrors"].forEach(function (property) {
+      if (typeof overlayOptions[property] === "string") {
+        var overlayFilterFunctionString = decodeURIComponent(overlayOptions[property]);
+
+        // eslint-disable-next-line no-new-func
+        var overlayFilterFunction = new Function("message", "var callback = ".concat(overlayFilterFunctionString, "\n        return callback(message)"));
+        overlayOptions[property] = overlayFilterFunction;
+      }
+    });
+  }
+};
 
 /**
  * @type {Status}
@@ -7276,8 +7358,10 @@ if (parsedResourceQuery.overlay) {
   if (typeof options.overlay === "object") {
     options.overlay = _objectSpread({
       errors: true,
-      warnings: true
+      warnings: true,
+      runtimeErrors: true
     }, options.overlay);
+    decodeOverlayOptions(options.overlay);
   }
   enabledFeatures.Overlay = true;
 }
@@ -7303,10 +7387,15 @@ if (options.logging) {
 self.addEventListener("beforeunload", function () {
   status.isUnloading = true;
 });
-var trustedTypesPolicyName = typeof options.overlay === "object" && options.overlay.trustedTypesPolicyName;
-var overlay = (0,_overlay_js__WEBPACK_IMPORTED_MODULE_4__.createOverlay)({
-  trustedTypesPolicyName: trustedTypesPolicyName
-});
+var overlay = typeof window !== "undefined" ? (0,_overlay_js__WEBPACK_IMPORTED_MODULE_4__.createOverlay)(typeof options.overlay === "object" ? {
+  trustedTypesPolicyName: options.overlay.trustedTypesPolicyName,
+  catchRuntimeError: options.overlay.runtimeErrors
+} : {
+  trustedTypesPolicyName: false,
+  catchRuntimeError: options.overlay
+}) : {
+  send: function send() {}
+};
 var onSocketMessage = {
   hot: function hot() {
     if (parsedResourceQuery.hot === "false") {
@@ -7347,6 +7436,7 @@ var onSocketMessage = {
       return;
     }
     options.overlay = value;
+    decodeOverlayOptions(options.overlay);
   },
   /**
    * @param {number} value
@@ -7421,13 +7511,16 @@ var onSocketMessage = {
     for (var i = 0; i < printableWarnings.length; i++) {
       _utils_log_js__WEBPACK_IMPORTED_MODULE_5__.log.warn(printableWarnings[i]);
     }
-    var needShowOverlayForWarnings = typeof options.overlay === "boolean" ? options.overlay : options.overlay && options.overlay.warnings;
-    if (needShowOverlayForWarnings) {
-      overlay.send({
-        type: "BUILD_ERROR",
-        level: "warning",
-        messages: _warnings
-      });
+    var overlayWarningsSetting = typeof options.overlay === "boolean" ? options.overlay : options.overlay && options.overlay.warnings;
+    if (overlayWarningsSetting) {
+      var warningsToDisplay = typeof overlayWarningsSetting === "function" ? _warnings.filter(overlayWarningsSetting) : _warnings;
+      if (warningsToDisplay.length) {
+        overlay.send({
+          type: "BUILD_ERROR",
+          level: "warning",
+          messages: _warnings
+        });
+      }
     }
     if (params && params.preventReloading) {
       return;
@@ -7449,13 +7542,16 @@ var onSocketMessage = {
     for (var i = 0; i < printableErrors.length; i++) {
       _utils_log_js__WEBPACK_IMPORTED_MODULE_5__.log.error(printableErrors[i]);
     }
-    var needShowOverlayForErrors = typeof options.overlay === "boolean" ? options.overlay : options.overlay && options.overlay.errors;
-    if (needShowOverlayForErrors) {
-      overlay.send({
-        type: "BUILD_ERROR",
-        level: "error",
-        messages: _errors
-      });
+    var overlayErrorsSettings = typeof options.overlay === "boolean" ? options.overlay : options.overlay && options.overlay.errors;
+    if (overlayErrorsSettings) {
+      var errorsToDisplay = typeof overlayErrorsSettings === "function" ? _errors.filter(overlayErrorsSettings) : _errors;
+      if (errorsToDisplay.length) {
+        overlay.send({
+          type: "BUILD_ERROR",
+          level: "error",
+          messages: _errors
+        });
+      }
     }
   },
   /**
@@ -8195,22 +8291,22 @@ exports.hooks = {
 /******/ 	}();
 /******/ 	
 /************************************************************************/
-var __webpack_exports__ = {};
+var __nested_webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
 /*!********************************************!*\
   !*** ./client-src/modules/logger/index.js ***!
   \********************************************/
-__nested_webpack_require_23461__.r(__webpack_exports__);
-/* harmony export */ __nested_webpack_require_23461__.d(__webpack_exports__, {
+__nested_webpack_require_23461__.r(__nested_webpack_exports__);
+/* harmony export */ __nested_webpack_require_23461__.d(__nested_webpack_exports__, {
 /* harmony export */   "default": function() { return /* reexport default export from named module */ webpack_lib_logging_runtime_js__WEBPACK_IMPORTED_MODULE_0__; }
 /* harmony export */ });
 /* harmony import */ var webpack_lib_logging_runtime_js__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_23461__(/*! webpack/lib/logging/runtime.js */ "./node_modules/webpack/lib/logging/runtime.js");
 
 }();
 var __webpack_export_target__ = exports;
-for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
-if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
+for(var i in __nested_webpack_exports__) __webpack_export_target__[i] = __nested_webpack_exports__[i];
+if(__nested_webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
 /******/ })()
 ;
 
@@ -8225,8 +8321,8 @@ if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "createOverlay": () => (/* binding */ createOverlay),
-/* harmony export */   "formatProblem": () => (/* binding */ formatProblem)
+/* harmony export */   createOverlay: () => (/* binding */ createOverlay),
+/* harmony export */   formatProblem: () => (/* binding */ formatProblem)
 /* harmony export */ });
 /* harmony import */ var ansi_html_community__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ansi-html-community */ "./node_modules/ansi-html-community/index.js");
 /* harmony import */ var ansi_html_community__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(ansi_html_community__WEBPACK_IMPORTED_MODULE_0__);
@@ -8296,6 +8392,7 @@ function formatProblem(type, item) {
 /**
  * @typedef {Object} CreateOverlayOptions
  * @property {string | null} trustedTypesPolicyName
+ * @property {boolean | (error: Error) => void} [catchRuntimeError]
  */
 
 /**
@@ -8307,6 +8404,8 @@ var createOverlay = function createOverlay(options) {
   var iframeContainerElement;
   /** @type {HTMLDivElement | null | undefined} */
   var containerElement;
+  /** @type {HTMLDivElement | null | undefined} */
+  var headerElement;
   /** @type {Array<(element: HTMLDivElement) => void>} */
   var onLoadQueue = [];
   /** @type {TrustedTypePolicy | undefined} */
@@ -8348,7 +8447,7 @@ var createOverlay = function createOverlay(options) {
       iframeContainerElement.contentDocument.createElement("div");
       contentElement.id = "webpack-dev-server-client-overlay-div";
       applyStyle(contentElement, _overlay_styles_js__WEBPACK_IMPORTED_MODULE_3__.containerStyle);
-      var headerElement = document.createElement("div");
+      headerElement = document.createElement("div");
       headerElement.innerText = "Compiled with problems:";
       applyStyle(headerElement, _overlay_styles_js__WEBPACK_IMPORTED_MODULE_3__.headerStyle);
       var closeButtonElement = document.createElement("button");
@@ -8414,9 +8513,11 @@ var createOverlay = function createOverlay(options) {
    * @param {string} type
    * @param {Array<string  | { moduleIdentifier?: string, moduleName?: string, loc?: string, message?: string }>} messages
    * @param {string | null} trustedTypesPolicyName
+   * @param {'build' | 'runtime'} messageSource
    */
-  function show(type, messages, trustedTypesPolicyName) {
+  function show(type, messages, trustedTypesPolicyName, messageSource) {
     ensureOverlayExists(function () {
+      headerElement.innerText = messageSource === "runtime" ? "Uncaught runtime errors:" : "Compiled with problems:";
       messages.forEach(function (message) {
         var entryElement = document.createElement("div");
         var msgStyle = type === "warning" ? _overlay_styles_js__WEBPACK_IMPORTED_MODULE_3__.msgStyles.warning : _overlay_styles_js__WEBPACK_IMPORTED_MODULE_3__.msgStyles.error;
@@ -8457,27 +8558,44 @@ var createOverlay = function createOverlay(options) {
     showOverlay: function showOverlay(_ref) {
       var _ref$level = _ref.level,
         level = _ref$level === void 0 ? "error" : _ref$level,
-        messages = _ref.messages;
-      return show(level, messages, options.trustedTypesPolicyName);
+        messages = _ref.messages,
+        messageSource = _ref.messageSource;
+      return show(level, messages, options.trustedTypesPolicyName, messageSource);
     },
     hideOverlay: hide
   });
-  (0,_overlay_runtime_error_js__WEBPACK_IMPORTED_MODULE_1__.listenToRuntimeError)(function (errorEvent) {
-    // error property may be empty in older browser like IE
-    var error = errorEvent.error,
-      message = errorEvent.message;
-    if (!error && !message) {
-      return;
-    }
-    var errorObject = error instanceof Error ? error : new Error(error || message);
-    overlayService.send({
-      type: "RUNTIME_ERROR",
-      messages: [{
-        message: errorObject.message,
-        stack: (0,_overlay_runtime_error_js__WEBPACK_IMPORTED_MODULE_1__.parseErrorToStacks)(errorObject)
-      }]
+  if (options.catchRuntimeError) {
+    /**
+     * @param {Error | undefined} error
+     * @param {string} fallbackMessage
+     */
+    var handleError = function handleError(error, fallbackMessage) {
+      var errorObject = error instanceof Error ? error : new Error(error || fallbackMessage);
+      var shouldDisplay = typeof options.catchRuntimeError === "function" ? options.catchRuntimeError(errorObject) : true;
+      if (shouldDisplay) {
+        overlayService.send({
+          type: "RUNTIME_ERROR",
+          messages: [{
+            message: errorObject.message,
+            stack: (0,_overlay_runtime_error_js__WEBPACK_IMPORTED_MODULE_1__.parseErrorToStacks)(errorObject)
+          }]
+        });
+      }
+    };
+    (0,_overlay_runtime_error_js__WEBPACK_IMPORTED_MODULE_1__.listenToRuntimeError)(function (errorEvent) {
+      // error property may be empty in older browser like IE
+      var error = errorEvent.error,
+        message = errorEvent.message;
+      if (!error && !message) {
+        return;
+      }
+      handleError(error, message);
     });
-  });
+    (0,_overlay_runtime_error_js__WEBPACK_IMPORTED_MODULE_1__.listenToUnhandledRejection)(function (promiseRejectionEvent) {
+      var reason = promiseRejectionEvent.reason;
+      handleError(reason, "Unknown promise rejection reason");
+    });
+  }
   return overlayService;
 };
 
@@ -8571,8 +8689,9 @@ function createMachine(_ref, _ref2) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "listenToRuntimeError": () => (/* binding */ listenToRuntimeError),
-/* harmony export */   "parseErrorToStacks": () => (/* binding */ parseErrorToStacks)
+/* harmony export */   listenToRuntimeError: () => (/* binding */ listenToRuntimeError),
+/* harmony export */   listenToUnhandledRejection: () => (/* binding */ listenToUnhandledRejection),
+/* harmony export */   parseErrorToStacks: () => (/* binding */ parseErrorToStacks)
 /* harmony export */ });
 /**
  *
@@ -8605,6 +8724,22 @@ function listenToRuntimeError(callback) {
   };
 }
 
+/**
+ * @callback UnhandledRejectionCallback
+ * @param {PromiseRejectionEvent} rejectionEvent
+ * @returns {void}
+ */
+
+/**
+ * @param {UnhandledRejectionCallback} callback
+ */
+function listenToUnhandledRejection(callback) {
+  window.addEventListener("unhandledrejection", callback);
+  return function cleanup() {
+    window.removeEventListener("unhandledrejection", callback);
+  };
+}
+
 
 /***/ }),
 
@@ -8626,6 +8761,7 @@ __webpack_require__.r(__webpack_exports__);
  * @typedef {Object} ShowOverlayData
  * @property {'warning' | 'error'} level
  * @property {Array<string  | { moduleIdentifier?: string, moduleName?: string, loc?: string, message?: string }>} messages
+ * @property {'build' | 'runtime'} messageSource
  */
 
 /**
@@ -8644,7 +8780,8 @@ var createOverlayMachine = function createOverlayMachine(options) {
     initial: "hidden",
     context: {
       level: "error",
-      messages: []
+      messages: [],
+      messageSource: "build"
     },
     states: {
       hidden: {
@@ -8693,19 +8830,22 @@ var createOverlayMachine = function createOverlayMachine(options) {
       dismissMessages: function dismissMessages() {
         return {
           messages: [],
-          level: "error"
+          level: "error",
+          messageSource: "build"
         };
       },
       appendMessages: function appendMessages(context, event) {
         return {
           messages: context.messages.concat(event.messages),
-          level: event.level || context.level
+          level: event.level || context.level,
+          messageSource: event.type === "RUNTIME_ERROR" ? "runtime" : "build"
         };
       },
       setMessages: function setMessages(context, event) {
         return {
           messages: event.messages,
-          level: event.level || context.level
+          level: event.level || context.level,
+          messageSource: event.type === "RUNTIME_ERROR" ? "runtime" : "build"
         };
       },
       hideOverlay: hideOverlay,
@@ -8727,13 +8867,13 @@ var createOverlayMachine = function createOverlayMachine(options) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "containerStyle": () => (/* binding */ containerStyle),
-/* harmony export */   "dismissButtonStyle": () => (/* binding */ dismissButtonStyle),
-/* harmony export */   "headerStyle": () => (/* binding */ headerStyle),
-/* harmony export */   "iframeStyle": () => (/* binding */ iframeStyle),
-/* harmony export */   "msgStyles": () => (/* binding */ msgStyles),
-/* harmony export */   "msgTextStyle": () => (/* binding */ msgTextStyle),
-/* harmony export */   "msgTypeStyle": () => (/* binding */ msgTypeStyle)
+/* harmony export */   containerStyle: () => (/* binding */ containerStyle),
+/* harmony export */   dismissButtonStyle: () => (/* binding */ dismissButtonStyle),
+/* harmony export */   headerStyle: () => (/* binding */ headerStyle),
+/* harmony export */   iframeStyle: () => (/* binding */ iframeStyle),
+/* harmony export */   msgStyles: () => (/* binding */ msgStyles),
+/* harmony export */   msgTextStyle: () => (/* binding */ msgTextStyle),
+/* harmony export */   msgTypeStyle: () => (/* binding */ msgTypeStyle)
 /* harmony export */ });
 // styles are inspired by `react-error-overlay`
 
@@ -8821,7 +8961,7 @@ var msgTextStyle = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "client": () => (/* binding */ client),
+/* harmony export */   client: () => (/* binding */ client),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _clients_WebSocketClient_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clients/WebSocketClient.js */ "./node_modules/webpack-dev-server/client/clients/WebSocketClient.js");
@@ -9078,9 +9218,9 @@ function getCurrentScriptSource() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "log": () => (/* binding */ log),
-/* harmony export */   "logEnabledFeatures": () => (/* binding */ logEnabledFeatures),
-/* harmony export */   "setLogLevel": () => (/* binding */ setLogLevel)
+/* harmony export */   log: () => (/* binding */ log),
+/* harmony export */   logEnabledFeatures: () => (/* binding */ logEnabledFeatures),
+/* harmony export */   setLogLevel: () => (/* binding */ setLogLevel)
 /* harmony export */ });
 /* harmony import */ var _modules_logger_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../modules/logger/index.js */ "./node_modules/webpack-dev-server/client/modules/logger/index.js");
 /* harmony import */ var _modules_logger_index_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_logger_index_js__WEBPACK_IMPORTED_MODULE_0__);
@@ -9327,9 +9467,10 @@ function stripAnsi(string) {
 */
 /* globals __webpack_hash__ */
 if (true) {
+	/** @type {undefined|string} */
 	var lastHash;
 	var upToDate = function upToDate() {
-		return lastHash.indexOf(__webpack_require__.h()) >= 0;
+		return /** @type {string} */ (lastHash).indexOf(__webpack_require__.h()) >= 0;
 	};
 	var log = __webpack_require__(/*! ./log */ "./node_modules/webpack/hot/log.js");
 	var check = function check() {
@@ -9419,6 +9560,11 @@ module.exports = new EventEmitter();
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
 */
+
+/**
+ * @param {(string | number)[]} updatedModules updated modules
+ * @param {(string | number)[] | null} renewedModules renewed modules
+ */
 module.exports = function (updatedModules, renewedModules) {
 	var unacceptedModules = updatedModules.filter(function (moduleId) {
 		return renewedModules && renewedModules.indexOf(moduleId) < 0;
@@ -9469,10 +9615,17 @@ module.exports = function (updatedModules, renewedModules) {
   \*****************************************/
 /***/ ((module) => {
 
+/** @typedef {"info" | "warning" | "error"} LogLevel */
+
+/** @type {LogLevel} */
 var logLevel = "info";
 
 function dummy() {}
 
+/**
+ * @param {LogLevel} level log level
+ * @returns {boolean} true, if should log
+ */
 function shouldLog(level) {
 	var shouldLog =
 		(logLevel === "info" && level === "info") ||
@@ -9481,6 +9634,10 @@ function shouldLog(level) {
 	return shouldLog;
 }
 
+/**
+ * @param {(msg?: string) => void} logFn log function
+ * @returns {(level: LogLevel, msg?: string) => void} function that logs when log level is sufficient
+ */
 function logGroup(logFn) {
 	return function (level, msg) {
 		if (shouldLog(level)) {
@@ -9489,6 +9646,10 @@ function logGroup(logFn) {
 	};
 }
 
+/**
+ * @param {LogLevel} level log level
+ * @param {string|Error} msg message
+ */
 module.exports = function (level, msg) {
 	if (shouldLog(level)) {
 		if (level === "info") {
@@ -9513,10 +9674,17 @@ module.exports.groupCollapsed = logGroup(groupCollapsed);
 
 module.exports.groupEnd = logGroup(groupEnd);
 
+/**
+ * @param {LogLevel} level log level
+ */
 module.exports.setLogLevel = function (level) {
 	logLevel = level;
 };
 
+/**
+ * @param {Error} err error
+ * @returns {string} formatted error
+ */
 module.exports.formatError = function (err) {
 	var message = err.message;
 	var stack = err.stack;
@@ -11425,7 +11593,7 @@ module.exports = getWDSMetadata;
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("5b45576c24266d6700ae")
+/******/ 		__webpack_require__.h = () => ("668a449c19a2f91cdf6d")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
@@ -11905,7 +12073,10 @@ module.exports = getWDSMetadata;
 /******/ 				scriptUrl = document.currentScript.src;
 /******/ 			if (!scriptUrl) {
 /******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
 /******/ 			}
 /******/ 		}
 /******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
@@ -12589,7 +12760,7 @@ module.exports = getWDSMetadata;
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	__webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ReactRefreshEntry.js");
-/******/ 	__webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=ws%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=false");
+/******/ 	__webpack_require__("./node_modules/webpack-dev-server/client/index.js?protocol=wss%3A&hostname=localhost&port=8887&pathname=%2Fws&logging=info&overlay=true&reconnect=10&hot=true&live-reload=true");
 /******/ 	__webpack_require__("./node_modules/webpack/hot/dev-server.js");
 /******/ 	__webpack_require__("./node_modules/@pmmmwh/react-refresh-webpack-plugin/client/ErrorOverlayEntry.js?sockHost=localhost&sockPort=8887&sockProtocol=http");
 /******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");

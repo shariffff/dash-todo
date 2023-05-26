@@ -2,6 +2,9 @@
 
 namespace DashTodo;
 
+if (!defined('ABSPATH')) {
+	exit;
+}
 $n = function ($function) {
 	return __NAMESPACE__ . "\\$function";
 };
@@ -17,11 +20,11 @@ function todo_post_type()
 				'name'          => __('Todo', 'dash-todo'),
 				'singular_name' => __('Todo', 'dash-todo')
 			],
-			'supports'		=> ['title'],
+			'supports'		=> ['title', 'page-attributes'],
 			'public'      	=> false,
 			'has_archive' 	=> true,
-			'show_ui'		=> false,
-			'show_in_rest'  => true
+			'show_ui'		=> true,
+			'show_in_rest'  => true,
 		]
 	);
 }
@@ -32,8 +35,8 @@ function admin_menu()
 	global $n;
 	$hook_name = add_submenu_page(
 		'index.php',
-		__('Todo', 'wp-dash_todo-settings-page-boilerplate'),
-		__('Todo', 'wp-dash_todo-settings-page-boilerplate'),
+		__('Todo', 'dash-todo'),
+		__('Todo', 'dash-todo'),
 		'manage_options',
 		'todo',
 		$n('admin_page'),
@@ -44,19 +47,18 @@ function admin_menu()
 }
 
 
-function wp_enqueue_scripts()
-{
-	enqueue_scripts_from_asset_file('index');
-}
+// function wp_enqueue_scripts()
+// {
+// 	enqueue_scripts_from_asset_file();
+// }
 
 
 function admin_page_load()
 {
 	global $n;
-	add_action('admin_enqueue_scripts', $n('wp_enqueue_scripts'));
+	add_action('admin_enqueue_scripts', $n('enqueue_scripts_from_asset_file'));
 	remove_all_filters('admin_footer_text');
 	remove_filter('update_footer', 'core_update_footer');
-	add_filter('update_footer', $n('update_footer'));
 	add_filter('admin_footer_text', fn () => null);
 	add_filter('admin_body_class', $n('admin_body_class'));
 }
@@ -68,21 +70,6 @@ function admin_body_class($classes)
 	return $classes;
 }
 
-function update_footer()
-{
-	$inspiringLines = [
-		"Verily, with every difficulty there is relief. [Quran 94:5-6]",
-		"Indeed, Allah is with the patient. [Quran 2:153]",
-		"Do good deeds properly, sincerely and moderately. [Quran 25:61]",
-		"So verily, with hardship, there is relief. [Quran 94:6]",
-		"And He is with you wherever you are. [Quran 57:4]",
-		"And seek help through patience and prayer. [Quran 2:45]",
-		"Be kind, for whenever kindness becomes part of something, it beautifies it. [Quran 54:40]"
-	];
-	$random_line =  array_rand($inspiringLines);
-
-	return "<small class='inspiring-lines' style='float: right; opacity: 0.5'>$inspiringLines[$random_line]</small>";
-}
 
 function admin_page()
 {
@@ -115,10 +102,35 @@ function dash_todo_admin_widget()
 }
 
 add_action('admin_enqueue_scripts', function () {
-
+	global $pagenow;
 	$hidden_widgets = get_user_option('metaboxhidden_dashboard');
 	if (is_array($hidden_widgets) && in_array('dash_todo_admin_widget', $hidden_widgets)) {
 		return;
 	}
-	enqueue_scripts_from_asset_file('index');
+	if (is_admin() && $pagenow === 'index.php') {
+		enqueue_scripts_from_asset_file();
+	}
 });
+function enqueue_scripts_from_asset_file()
+{
+	$script_asset_path = dirname(DASH_TODO_PLUGIN_FILE) . "/build/index.asset.php";
+	if (file_exists($script_asset_path)) {
+
+		$script_asset = include $script_asset_path;
+		$script_dependencies = $script_asset['dependencies'] ?? [];
+
+
+		if (in_array('wp-react-refresh-runtime', $script_dependencies, true) && !defined('SCRIPT_DEBUG')) {
+			unset($script_dependencies['wp-react-refresh-runtime']);
+		}
+
+		wp_enqueue_script("dash-todo-index", plugins_url("build/index.js", DASH_TODO_PLUGIN_FILE), $script_dependencies, $script_asset['version'], true);
+
+		$style_dependencies = [];
+		if (in_array('wp-components', $script_dependencies, true)) {
+			$style_dependencies[] = 'wp-components';
+		}
+
+		wp_enqueue_style("dash-todo-index", plugins_url("build/index.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, $script_asset['version'], 'all');
+	}
+}
