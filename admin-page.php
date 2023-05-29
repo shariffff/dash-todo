@@ -20,7 +20,7 @@ function todo_post_type()
 				'name'          => __('Todo', 'dash-todo'),
 				'singular_name' => __('Todo', 'dash-todo')
 			],
-			'supports'		=> ['title', 'page-attributes'],
+			'supports'		=> ['title', 'page-attributes', 'excerpt'],
 			'public'      	=> false,
 			'has_archive' 	=> true,
 			'show_ui'		=> true,
@@ -47,12 +47,6 @@ function admin_menu()
 }
 
 
-// function wp_enqueue_scripts()
-// {
-// 	enqueue_scripts_from_asset_file();
-// }
-
-
 function admin_page_load()
 {
 	global $n;
@@ -74,8 +68,7 @@ function admin_body_class($classes)
 function admin_page()
 {
 	echo '<noscript>Enable JavaScript to visit this page</noscript><div id="TodoApp"></div>';
-	if (!wp_script_is('dash-todo-index')) {
-
+	if (!wp_script_is('dash-todo')) {
 		_e('Please reload to see the todo items.', 'dash-todo');
 	}
 }
@@ -113,24 +106,19 @@ add_action('admin_enqueue_scripts', function () {
 });
 function enqueue_scripts_from_asset_file()
 {
-	$script_asset_path = dirname(DASH_TODO_PLUGIN_FILE) . "/build/index.asset.php";
-	if (file_exists($script_asset_path)) {
-
-		$script_asset = include $script_asset_path;
-		$script_dependencies = $script_asset['dependencies'] ?? [];
-
-
-		if (in_array('wp-react-refresh-runtime', $script_dependencies, true) && !defined('SCRIPT_DEBUG')) {
-			unset($script_dependencies['wp-react-refresh-runtime']);
-		}
-
-		wp_enqueue_script("dash-todo-index", plugins_url("build/index.js", DASH_TODO_PLUGIN_FILE), $script_dependencies, $script_asset['version'], true);
-
-		$style_dependencies = [];
-		if (in_array('wp-components', $script_dependencies, true)) {
-			$style_dependencies[] = 'wp-components';
-		}
-
-		wp_enqueue_style("dash-todo-index", plugins_url("build/index.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, $script_asset['version'], 'all');
+	if (!$manifest = realpath(__DIR__ . '/dist/entrypoints.json')) {
+		throw new \Exception('Example: you must run `yarn build` before using this plugin.');
 	}
+
+	$entry_points = json_decode(file_get_contents($manifest));
+
+	wp_enqueue_script("dash-todo", plugins_url("dist/js/app.js", DASH_TODO_PLUGIN_FILE), $entry_points->app->dependencies, null, true);
+
+
+	$style_dependencies = [];
+
+	if (in_array('wp-components', $entry_points->app->dependencies, true)) {
+		$style_dependencies[] = 'wp-components';
+	}
+	wp_enqueue_style("dash-todo-css", plugins_url("dist/css/app.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, null, true);
 }

@@ -3,22 +3,17 @@ import {
 	Button,
 	__experimentalHStack as HStack,
 	Icon,
-	Popover,
-	ButtonGroup,
-	ColorIndicator,
 } from '@wordpress/components';
 import { useState, useEffect, useRef } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-
-export default function ({ title, id, status, deleted }) {
-	const [isVisible, setIsVisible] = useState(false);
-	const toggleVisible = () => {
-		setIsVisible((state) => !state);
-	};
+import { textToDate, formatDate, priorityLabel } from '../functions';
+export default function ({ title, id, status, deleted, priority, due }) {
 	const isMounted = useRef(false);
 	const [isChecked, setChecked] = useState(status === 'publish');
 
 	const setStatus = isChecked ? 'publish' : 'pending';
+
+	const priorityClass  = priorityLabel(priority) === 'No Priority' ? '' :  priorityLabel(priority)
 
 	useEffect(() => {
 		if (isMounted.current) {
@@ -44,13 +39,17 @@ export default function ({ title, id, status, deleted }) {
 			.catch((err) => console.log(err?.message));
 	};
 	return (
-		<HStack alignment="left" className="single--todo">
+		<HStack alignment="left" className={`single--todo ${priorityClass.toLowerCase()}`}>
 			<CheckboxControl
 				label={title}
+				help={formatDate(textToDate(due))}
 				checked={isChecked}
 				onChange={setChecked}
 				className={isChecked ? 'completed' : 'incomplete'}
 			/>
+			<div>
+				{}
+			</div>
 			<Button style={{ height: 20 }} className="delete" onClick={deleteTodo}>
 				<Icon icon="trash" size={15} style={{ color: 'gray' }}></Icon>
 			</Button>

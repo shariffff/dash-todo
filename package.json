@@ -4,11 +4,8 @@
   "private": false,
   "homepage": "https://github.com/shariffff/dash-todo",
   "scripts": {
-    "start": "wp-scripts start src/index.js --output-path=build",
-    "hot": "wp-scripts start src/index.js --output-path=build --config webpack.config.js --hot ",
-    "build": "wp-scripts build src/index.js --output-path=build",
-    "format": "wp-scripts format ./src",
-    "plugin-zip": "wp-scripts plugin-zip"
+    "dev": "bud dev",
+    "build": "bud build"
   },
   "dependencies": {
     "@wordpress/api-fetch": "^6.26.0",
@@ -19,7 +16,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@wordpress/scripts": "26.5.0"
+    "@roots/bud": "^6.12.3",
+    "@roots/bud-preset-wordpress": "^6.12.3"
   },
   "browserslist": "last 2 versions, Firefox ESR, not dead, not op_mini all, not ie <= 11"
 }
