@@ -23,7 +23,7 @@ function todo_post_type()
 			'supports'		=> ['title', 'page-attributes', 'excerpt'],
 			'public'      	=> false,
 			'has_archive' 	=> true,
-			'show_ui'		=> true,
+			'show_ui'		=> false,
 			'show_in_rest'  => true,
 		]
 	);

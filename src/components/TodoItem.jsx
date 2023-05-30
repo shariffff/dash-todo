@@ -6,14 +6,14 @@ import {
 } from '@wordpress/components';
 import { useState, useEffect, useRef } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import { textToDate, formatDate, priorityLabel } from '../functions';
+import { stripTag, formatDate, priorityLabel } from '../functions';
 export default function ({ title, id, status, deleted, priority, due }) {
 	const isMounted = useRef(false);
 	const [isChecked, setChecked] = useState(status === 'publish');
 
 	const setStatus = isChecked ? 'publish' : 'pending';
 
-	const priorityClass  = priorityLabel(priority) === 'No Priority' ? '' :  priorityLabel(priority)
+	const priorityClass = priorityLabel(priority).toLowerCase();
 
 	useEffect(() => {
 		if (isMounted.current) {
@@ -39,17 +39,15 @@ export default function ({ title, id, status, deleted, priority, due }) {
 			.catch((err) => console.log(err?.message));
 	};
 	return (
-		<HStack alignment="left" className={`single--todo ${priorityClass.toLowerCase()}`}>
+		<HStack alignment="topLeft" className={`single--todo ${priorityClass}`}>
 			<CheckboxControl
 				label={title}
-				help={formatDate(textToDate(due))}
+				help={formatDate(stripTag(due))}
 				checked={isChecked}
 				onChange={setChecked}
 				className={isChecked ? 'completed' : 'incomplete'}
 			/>
-			<div>
-				{}
-			</div>
+
 			<Button style={{ height: 20 }} className="delete" onClick={deleteTodo}>
 				<Icon icon="trash" size={15} style={{ color: 'gray' }}></Icon>
 			</Button>

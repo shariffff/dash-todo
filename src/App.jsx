@@ -37,7 +37,7 @@ export default function () {
 	};
 
 	return (
-		<div className="dash-todo-layout hi">
+		<div className="dash-todo-layout">
 			<div className="dash-todo-header">
 				<div className="dash-todo-title-section">
 					<h1>Todo</h1>

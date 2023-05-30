@@ -12,13 +12,12 @@ import {
 import { useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
 
-import { priorityLabel, formatDate } from '../functions';
+import { priorityLabel } from '../functions';
 
 export default function ({ created }) {
 	const [date, setDate] = useState();
 	const [todo, setTodo] = useState('');
-	const [priority, setPriority] = useState(0);
-
+	const [priority, setPriority] = useState('0');
 	const createTodo = () => {
 		apiFetch({
 			path: '/wp/v2/todo',
@@ -26,7 +25,7 @@ export default function ({ created }) {
 			data: {
 				title: todo,
 				status: 'pending',
-				excerpt: formatDate(date),
+				excerpt: date,
 				menu_order: priority,
 			},
 		})
@@ -48,10 +47,10 @@ export default function ({ created }) {
 			createTodo();
 		}
 	};
-	const resetDatePriority = (event) => {
-	  setDate(null)
-		setPriority(0)
-	}
+	const resetDatePriority = () => {
+		setDate(null);
+		setPriority('0');
+	};
 
 	return (
 		<Card>
@@ -73,7 +72,7 @@ export default function ({ created }) {
 										aria-expanded={isOpen}
 										icon="calendar-alt"
 									>
-										{ date && new Date(date)?.getDate()?.toString() }
+										{date && new Date(date)?.getDate()?.toString()}
 									</Button>
 								)}
 								renderContent={() => (
@@ -94,13 +93,12 @@ export default function ({ created }) {
 										aria-expanded={isOpen}
 										icon="flag"
 									>
-										{priorityLabel(priority)}
+										{priority !== '0' && priorityLabel(priority)}
 									</Button>
 								)}
 								renderContent={() => (
 									<RadioControl
-									style={{
-									}}
+										style={{}}
 										label="Priority"
 										selected={priority}
 										options={[

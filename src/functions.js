@@ -14,11 +14,12 @@ export const formatDate = (date) => {
         day: 'numeric',
         month: 'short',
     };
-    return date ? date.toLocaleString('en-US', options) : '';
+
+    return date ? new Date(date.trim()).toLocaleString('en-US', options) : '';
 };
 
-export const textToDate = (htmlString) => {
+export const stripTag = (htmlString) => {
     const div = document.createElement('div');
     div.innerHTML = htmlString;
-    return formatDate(div.textContent) || formatDate(div.innerText) || '';
+    return div.textContent || div.innerText || '';
   }
