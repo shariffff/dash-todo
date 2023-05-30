@@ -3,3 +3,5 @@ yarn.lock
 build/*hot*
 build/*.map
 dash-todo.zip
+dist/dynamic
+dist/*hot-update*

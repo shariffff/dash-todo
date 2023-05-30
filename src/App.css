@@ -1,6 +1,7 @@
 body.dash-todo .update-nag.notice.notice-warning.inline {
 	display: none;
 }
+
 .dash-todo-header {
 	background: #fff;
 	border-bottom: 1px solid #dcdcde;
@@ -33,9 +34,18 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 .no-js {
 	text-align: center;
 }
+body.dash-todo .components-checkbox-control {
+	max-width: calc(100% - 36px);
+}
 .completed label {
 	color: gray;
 	text-decoration: line-through;
+}
+.components-checkbox-control .components-base-control__help {
+	margin-left: 30px;
+}
+.completed {
+	opacity: 0.7;
 }
 
 .single--todo .delete {
@@ -51,4 +61,34 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 }
 #dash_todo_admin_widget .components-card {
 	box-shadow: none;
+}
+.dropdown-due-date .components-popover__content {
+	min-width: 150px;
+	padding: 15px;
+}
+
+.single--todo.high label::after,
+.single--todo.low label::after,
+.single--todo.medium label::after {
+	padding: 2px 8px;
+	border-radius: 6px;
+	margin-left: 15px;
+	color: #000;
+	border: 1px solid;
+}
+
+.single--todo.high label::after {
+	content: 'High';
+	background: #fee2e2;
+	border-color: #fecaca;
+}
+.single--todo.medium label::after {
+	content: 'Medium';
+	background: #fefce8;
+	border-color: #fef08a;
+}
+.single--todo.low label::after {
+	content: 'Low';
+	background: #eff6ff;
+	border-color: #a5b4fc;
 }

@@ -1,9 +1,9 @@
-import { useState, useEffect } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-import TodoList from './components/TodoList';
+import { useEffect, useState } from '@wordpress/element';
 import './App.css';
 import AddTodo from './components/AddTodo';
 import LoadingScreen from './components/Loading';
+import TodoList from './components/TodoList';
 
 export default function () {
 	const [todoItems, setTodoItems] = useState([]);
@@ -11,10 +11,10 @@ export default function () {
 	const [loading, setLoading] = useState(true);
 
 	const query = new URLSearchParams({
-		_fields: 'id,title,status',
+		_fields: 'id,title,status,menu_order,excerpt',
 		status: 'pending,publish',
 		per_page: 100,
-		orderby: 'id',
+		orderby: 'menu_order',
 	});
 
 	useEffect(() => {
@@ -22,8 +22,8 @@ export default function () {
 			path: `/wp/v2/todo?${query}`,
 		})
 			.then((posts) => {
-				console.log('fetching');
 				setTodoItems(posts);
+				setLoading(false);
 				setLoading(false);
 			})
 			.catch((error) => console.error(error?.message));
