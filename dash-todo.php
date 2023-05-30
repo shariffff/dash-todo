@@ -40,16 +40,21 @@ function create_demo_todo_items()
 		[
 			'post_title'    => 'Install and Activate Dash Todo',
 			'post_status'   => 'publish',
-			'post_type'   => 'todo'
+			'post_type'   => 'todo',
+			'post_excerpt' => date("F j, Y"),
+			'menu_order' => 3
+
 		],
 		[
 			'post_title'    => 'Create a new Todo',
 			'post_status'   => 'pending',
-			'post_type'   => 'todo'
+			'post_type'   => 'todo',
+			'post_excerpt' => date("F j, Y"),
+			'menu_order' => 1
 
 		]
 	];
-	if (!$installed) {
+	if (true) {
 		update_option('dash_todo_installed', time());
 		foreach ($initial_todo_items as $item) {
 			wp_insert_post($item);

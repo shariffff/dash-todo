@@ -74,7 +74,7 @@ function admin_page()
 	}
 }
 
-add_filter('plugin_action_links_' . plugin_basename(dirname(__FILE__, 2)) . '/dash-todo.php', $n('action_links'));
+add_filter('plugin_action_links_' . plugin_basename(dirname(__FILE__)) . '/dash-todo.php', $n('action_links'));
 
 function action_links($links)
 {
