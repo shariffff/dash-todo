@@ -67,6 +67,7 @@ function admin_body_class($classes)
 
 function admin_page()
 {
+
 	echo '<noscript>Enable JavaScript to visit this page</noscript><div id="TodoApp"></div>';
 	if (!wp_script_is('dash-todo')) {
 		_e('Please reload to see the todo items.', 'dash-todo');
@@ -120,5 +121,5 @@ function enqueue_scripts_from_asset_file()
 	if (in_array('wp-components', $entry_points->app->dependencies, true)) {
 		$style_dependencies[] = 'wp-components';
 	}
-	wp_enqueue_style("dash-todo-css", plugins_url("dist/css/app.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, null, true);
+	wp_enqueue_style("dash-todo", plugins_url("dist/css/app.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, null, false);
 }
