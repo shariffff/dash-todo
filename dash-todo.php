@@ -54,7 +54,7 @@ function create_demo_todo_items()
 
 		]
 	];
-	if (true) {
+	if (!$installed) {
 		update_option('dash_todo_installed', time());
 		foreach ($initial_todo_items as $item) {
 			wp_insert_post($item);
