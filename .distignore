@@ -1,0 +1,11 @@
+/.wordpress-org
+/.git
+/.github
+/node_modules
+
+.distignore
+.gitignore
+/src
+yarn.lock
+package.json
+bud.config.mjs

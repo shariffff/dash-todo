@@ -1,5 +1,5 @@
 === Dash Todo ===
-Contributors: smeunus,ashikrnhq04
+Contributors: smeunus
 Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 5.9
@@ -16,12 +16,14 @@ A Todo management plugin for WordPress site admins. Stay consistent and never fo
 The Todo Plugin is a tool designed to enhance productivity and task management within the WordPress admin area. This plugin allows admins to easily create and manage tasks, keeping track of what needs to be done.
 
 You can manage the Todo from *Dashboard -> Todo* or from the *Dashboard widget*.
+
 Note: If you toggle the *Todo widget*, a page reload is required. This is for Performance purpose.
 
 == Frequently Asked Questions ==
-
-= Can I contribute to this plugin? =
-Sure, I'm managing the plugin here: https://github.com/shariffff/dash-todo
+= Why todo items are loading slowly? =
+It depends on the site's REST API response. I'm trying to optimize it as much as possible.
+= Where to report bugs or suggest improvements? =
+I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free to create issues. I'll try my best to help.
 
 == Screenshots ==
 
@@ -41,10 +43,12 @@ Sure, I'm managing the plugin here: https://github.com/shariffff/dash-todo
 * Dashboard widget added
 * Add todo item by pressing ENTER
 * Render raw title
-
 = 1.0.3 =
 * Performance
 * Bug fix
+= 1.0.5 =
+* Feature Added: Set Priority
+* Feature Added: Set Due Date
 
 == Upgrade Notice ==
 
@@ -56,3 +60,5 @@ Bug fix
 Feature updates
 =1.0.2 =
 Bug fix
+= 1.0.5 =
+New Features to set todo priority and due date.
