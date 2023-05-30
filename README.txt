@@ -4,7 +4,7 @@ Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 5.9
 Tested up to: 6.2
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -49,6 +49,9 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 = 1.0.5 =
 * Feature Added: Set Priority
 * Feature Added: Set Due Date
+= 1.0.6 =
+* Fix: Plugin Menu Link
+* Update: Initial todo items with due date and priority.
 
 == Upgrade Notice ==
 
@@ -61,4 +64,6 @@ Feature updates
 =1.0.2 =
 Bug fix
 = 1.0.5 =
+New Features to set todo priority and due date.
+= 1.0.6 =
 New Features to set todo priority and due date.
