@@ -52,7 +52,8 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 = 1.0.6 =
 * Fix: Plugin Menu Link
 * Update: Initial todo items with due date and priority.
-
+= 1.0.7 =
+Fix: Installation hook
 == Upgrade Notice ==
 
 = 1.0 =
@@ -67,3 +68,5 @@ Bug fix
 New Features to set todo priority and due date.
 = 1.0.6 =
 New Features to set todo priority and due date.
+= 1.0.7 =
+Fix: Installation hook
