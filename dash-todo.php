@@ -8,7 +8,7 @@
  * Domain Path:       /languages
  * Author:            Sharif Mohammad Eunus
  * Author URI:       https://sharifff.com
- * Version:           1.0.7
+ * Version:           1.0.8
  * Requires at least: 5.9
  * Tested up to:      6.2
  * Requires PHP:      7.4
@@ -26,7 +26,7 @@ define('DASH_TODO_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('DASH_TODO_PLUGIN_URL', plugins_url('/', __FILE__));
 define('DASH_TODO_PLUGIN_FILE', __FILE__);
 define('DASH_TODO_PLUGIN_DIR', __DIR__);
-define('DASH_TODO_PLUGIN_VERSION', '1.0.7');
+define('DASH_TODO_PLUGIN_VERSION', '1.0.8');
 
 
 require_once 'admin-page.php';
@@ -54,10 +54,12 @@ function create_demo_todo_items()
 
 		]
 	];
+
 	if (!$installed) {
 		update_option('dash_todo_installed', time());
 		foreach ($initial_todo_items as $item) {
 			wp_insert_post($item);
 		}
 	}
+
 }

@@ -14,6 +14,7 @@ export default function ({ title, id, status, deleted, priority, due }) {
 	const setStatus = isChecked ? 'publish' : 'pending';
 
 	const priorityClass = priorityLabel(priority).toLowerCase();
+	const dueDate = formatDate(stripTag(due));
 
 	useEffect(() => {
 		if (isMounted.current) {
@@ -41,12 +42,12 @@ export default function ({ title, id, status, deleted, priority, due }) {
 	return (
 		<HStack alignment="topLeft" className={`single--todo ${priorityClass}`}>
 			<CheckboxControl
-				label={title}
-				help={formatDate(stripTag(due))}
+				label={`${title}`}
 				checked={isChecked}
 				onChange={setChecked}
 				className={isChecked ? 'completed' : 'incomplete'}
 			/>
+			<span className='due--date'>{dueDate}</span>
 
 			<Button style={{ height: 20 }} className="delete" onClick={deleteTodo}>
 				<Icon icon="trash" size={15} style={{ color: 'gray' }}></Icon>
