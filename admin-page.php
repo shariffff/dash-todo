@@ -113,7 +113,7 @@ function enqueue_scripts_from_asset_file()
 
 	$entry_points = json_decode(file_get_contents($manifest));
 
-	wp_enqueue_script("dash-todo", plugins_url("dist/js/app.js", DASH_TODO_PLUGIN_FILE), $entry_points->app->dependencies, null, true);
+	wp_enqueue_script("dash-todo", plugins_url("dist/js/app.js", DASH_TODO_PLUGIN_FILE), $entry_points->app->dependencies, DASH_TODO_PLUGIN_VERSION, true);
 
 
 	$style_dependencies = [];
@@ -121,5 +121,5 @@ function enqueue_scripts_from_asset_file()
 	if (in_array('wp-components', $entry_points->app->dependencies, true)) {
 		$style_dependencies[] = 'wp-components';
 	}
-	wp_enqueue_style("dash-todo", plugins_url("dist/css/app.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, null, false);
+	wp_enqueue_style("dash-todo", plugins_url("dist/css/app.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, DASH_TODO_PLUGIN_VERSION, false);
 }

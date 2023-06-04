@@ -1,10 +1,10 @@
 === Dash Todo ===
-Contributors: smeunus
+Contributors: smeunus,ashikrnhq04
 Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 5.9
 Tested up to: 6.2
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,8 +17,6 @@ The Todo Plugin is a tool designed to enhance productivity and task management w
 
 You can manage the Todo from *Dashboard -> Todo* or from the *Dashboard widget*.
 
-Note: If you toggle the *Todo widget*, a page reload is required. This is for Performance purpose.
-
 == Frequently Asked Questions ==
 = Why todo items are loading slowly? =
 It depends on the site's REST API response. I'm trying to optimize it as much as possible.
@@ -28,49 +26,41 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 == Screenshots ==
 
 1. Screenshot of Dash Todo plugins interface.
-2. Screenshot of Dash Todo plugins widget.
 
 
 == Changelog ==
+= 1.0.9 =
+* Updated: Container width is extended
+* Fix: UI Fixed
+* Fix: Asset versioning
+
+= 1.0.8 =
+* Updated: UI improvements and fixes
+
+= 1.0.7 =
+* Fixed: Installation hook issue
+
+= 1.0.6 =
+* Fixed: Plugin menu link
+* Updated: Initial todo items now include due date and priority
+
+= 1.0.5 =
+* Added feature: Set priority for todo items
+* Added feature: Set due date for todo items
+
+= 1.0.3 =
+* Performance enhancements
+* Bug fixes
+
+= 1.0.2 =
+* Added dashboard widget
+* Todo items can now be added by pressing ENTER
+* Raw title rendering implemented
+
+= 1.0.1 =
+* Permanently delete todo items, no longer sent to trash
+* On uninstall, all todo items and options are deleted
+* Fixed delete button alignment issue
 
 = 1.0 =
 * Initial release
-= 1.0.1 =
-* Delete todo items permanently, previously they were in trash
-* On Uninstall, delete all todo items and delete option
-* Fix delete button alignment
-= 1.0.2 =
-* Dashboard widget added
-* Add todo item by pressing ENTER
-* Render raw title
-= 1.0.3 =
-* Performance
-* Bug fix
-= 1.0.5 =
-* Feature Added: Set Priority
-* Feature Added: Set Due Date
-= 1.0.6 =
-* Fix: Plugin Menu Link
-* Update: Initial todo items with due date and priority.
-= 1.0.7 =
-Fix: Installation hook
-= 1.0.8 =
-Fix: UI
-== Upgrade Notice ==
-
-= 1.0 =
-Initial release
-= 1.0.1 =
-Bug fix
-=1.0.2 =
-Feature updates
-=1.0.2 =
-Bug fix
-= 1.0.5 =
-New Features to set todo priority and due date.
-= 1.0.6 =
-New Features to set todo priority and due date.
-= 1.0.7 =
-Fix: Installation hook
-= 1.0. =
-Fix: UI

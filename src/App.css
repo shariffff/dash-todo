@@ -29,24 +29,29 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 }
 .dash-todo .dash-todo-layout .dash-todo-layout-body {
 	margin: 0 auto;
-	max-width: 800px;
+	max-width: 1000px;
 }
 .no-js {
 	text-align: center;
 }
-body.dash-todo .components-checkbox-control {
+#TodoApp .components-checkbox-control .components-base-control__field {
+	display: flex;
+}
+#TodoApp .components-checkbox-control {
+	max-width: calc(100% - 260px);
+}
+#TodoApp .has--no-priority.has--no-due-date .components-checkbox-control {
 	max-width: calc(100% - 36px);
 }
 .completed label,
-.completed + .due--date{
+.completed + .due--date {
 	color: gray;
 	text-decoration: line-through;
 }
 .components-checkbox-control .components-base-control__help {
 	margin-left: 30px;
 }
-.completed
-.completed + .due--date{
+.completed .completed + .due--date {
 	opacity: 0.7;
 }
 
@@ -69,10 +74,10 @@ body.dash-todo .components-checkbox-control {
 	padding: 15px;
 }
 
-.single--todo.high label::after,
-.single--todo.low label::after,
-.single--todo.medium label::after,
-.due--date{
+.single--todo.high .todo--priority,
+.single--todo.low .todo--priority,
+.single--todo.medium .todo--priority,
+.due--date {
 	padding: 2px 8px;
 	border-radius: 6px;
 	margin-left: 15px;
@@ -80,28 +85,25 @@ body.dash-todo .components-checkbox-control {
 	border: 1px solid;
 }
 
-
-.single--todo.high label::after,
-.single--todo.high .due--date{
-	content: 'High';
+.single--todo.high .todo--priority,
+.single--todo.high .due--date {
 	background: #fee2e2;
 	border-color: #fecaca;
 }
-.single--todo.medium label::after,
-.single--todo.medium .due--date{
-	content: 'Medium';
+.single--todo.medium .todo--priority,
+.single--todo.medium .due--date {
 	background: #fefce8;
 	border-color: #fef08a;
 }
-.single--todo.low label::after,
-.single--todo.low .due--date{
-	content: 'Low';
+.single--todo.low .todo--priority,
+.single--todo.low .due--date {
 	background: #eff6ff;
 	border-color: #a5b4fc;
 }
-.due--date{
-    margin-left: 5px
+.due--date {
+	margin-left: 5px;
 }
-.due--date:empty{
-    display: none
+.due--date:empty,
+.has--no-priority .todo--priority {
+	display: none;
 }

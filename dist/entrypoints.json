@@ -1,18 +1,15 @@
 {
   "app": {
-    "css": [
-      "css/app.css"
-    ],
     "js": [
       "js/app.js"
     ],
     "dependencies": [
       "react",
+      "react-dom",
       "wp-api-fetch",
       "wp-element",
       "wp-components",
-      "wp-html-entities",
-      "react-dom"
+      "wp-html-entities"
     ]
   }
 }

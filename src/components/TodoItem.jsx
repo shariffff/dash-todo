@@ -13,9 +13,10 @@ export default function ({ title, id, status, deleted, priority, due }) {
 
 	const setStatus = isChecked ? 'publish' : 'pending';
 
-	const priorityClass = priorityLabel(priority).toLowerCase();
+	const priorityClass = priorityLabel(priority);
 	const dueDate = formatDate(stripTag(due));
-
+	const hasPriority = priority !== 0 ? 'has--priority' : 'has--no-priority';
+	const hasDueDate = dueDate !== '' ? 'has--due-date' : 'has--no-due-date';
 	useEffect(() => {
 		if (isMounted.current) {
 			apiFetch({
@@ -40,14 +41,18 @@ export default function ({ title, id, status, deleted, priority, due }) {
 			.catch((err) => console.log(err?.message));
 	};
 	return (
-		<HStack alignment="topLeft" className={`single--todo ${priorityClass}`}>
+		<HStack
+			alignment="topLeft"
+			className={`single--todo ${priorityClass.toLowerCase()} ${hasPriority} ${hasDueDate}`}
+		>
 			<CheckboxControl
 				label={`${title}`}
 				checked={isChecked}
 				onChange={setChecked}
 				className={isChecked ? 'completed' : 'incomplete'}
 			/>
-			<span className='due--date'>{dueDate}</span>
+			<span className="todo--priority">{priorityClass}</span>
+			<span className="due--date">{dueDate}</span>
 
 			<Button style={{ height: 20 }} className="delete" onClick={deleteTodo}>
 				<Icon icon="trash" size={15} style={{ color: 'gray' }}></Icon>
