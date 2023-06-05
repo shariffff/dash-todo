@@ -44,14 +44,16 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 	max-width: calc(100% - 36px);
 }
 .completed label,
-.completed + .due--date {
+.completed .due--date,
+.completed .todo--priority {
 	color: gray;
 	text-decoration: line-through;
 }
 .components-checkbox-control .components-base-control__help {
 	margin-left: 30px;
 }
-.completed .completed + .due--date {
+.completed .due--date,
+.completed .todo--priority {
 	opacity: 0.7;
 }
 

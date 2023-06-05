@@ -17,6 +17,7 @@ export default function ({ title, id, status, deleted, priority, due }) {
 	const dueDate = formatDate(stripTag(due));
 	const hasPriority = priority !== 0 ? 'has--priority' : 'has--no-priority';
 	const hasDueDate = dueDate !== '' ? 'has--due-date' : 'has--no-due-date';
+	const completedClass = isChecked ? 'completed' : 'incomplete';
 	useEffect(() => {
 		if (isMounted.current) {
 			apiFetch({
@@ -43,13 +44,13 @@ export default function ({ title, id, status, deleted, priority, due }) {
 	return (
 		<HStack
 			alignment="topLeft"
-			className={`single--todo ${priorityClass.toLowerCase()} ${hasPriority} ${hasDueDate}`}
+			className={`single--todo ${completedClass}  ${priorityClass.toLowerCase()} ${hasPriority} ${hasDueDate}`}
 		>
 			<CheckboxControl
 				label={`${title}`}
 				checked={isChecked}
 				onChange={setChecked}
-				className={isChecked ? 'completed' : 'incomplete'}
+				// className={isChecked ? 'completed' : 'incomplete'}
 			/>
 			<span className="todo--priority">{priorityClass}</span>
 			<span className="due--date">{dueDate}</span>

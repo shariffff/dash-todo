@@ -21,7 +21,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body.dash-todo .update-nag.notice.notice-warning.inline {\n\tdisplay: none;\n}\n\n.dash-todo-header {\n\tbackground: #fff;\n\tborder-bottom: 1px solid #dcdcde;\n\tmargin: 0 0 2rem;\n\ttext-align: center;\n}\n\n.dash-todo-header .dash-todo-title-section {\n\talign-items: center;\n\tclear: both;\n\tdisplay: flex;\n\tjustify-content: center;\n\tpadding-top: 8px;\n}\n\n.dash-todo-header .dash-todo-title-section h1 {\n\tdisplay: inline-block;\n\tfont-size: 23px;\n\tfont-weight: 600;\n\tline-height: 1.3;\n\tmargin: 0 0.8rem 1rem;\n\tpadding: 9px 0 4px;\n}\n\n.dash-todo #wpcontent,\n.dash-todo.auto-fold #wpcontent {\n\tpadding-left: 0;\n}\n\n.dash-todo .dash-todo-layout .dash-todo-layout-body {\n\tmargin: 0 auto;\n\tmax-width: 1000px;\n}\n\n.no-js {\n\ttext-align: center;\n}\n\n#TodoApp .components-checkbox-control .components-base-control__field {\n\tdisplay: flex;\n}\n\n#TodoApp .components-checkbox-control {\n\tmax-width: calc(100% - 260px);\n}\n\n#TodoApp .has--no-priority.has--no-due-date .components-checkbox-control {\n\tmax-width: calc(100% - 36px);\n}\n\n.completed label,\n.completed + .due--date {\n\tcolor: gray;\n\t-webkit-text-decoration: line-through;\n\ttext-decoration: line-through;\n}\n\n.components-checkbox-control .components-base-control__help {\n\tmargin-left: 30px;\n}\n\n.completed .completed + .due--date {\n\topacity: 0.7;\n}\n\n.single--todo .delete {\n\tdisplay: none;\n}\n\n.single--todo:hover .delete {\n\tdisplay: inherit;\n\tmargin-bottom: 8px;\n}\n\n#dash_todo_admin_widget .dash-todo-header {\n\tdisplay: none;\n}\n\n#dash_todo_admin_widget .components-card {\n\tbox-shadow: none;\n}\n\n.dropdown-due-date .components-popover__content {\n\tmin-width: 150px;\n\tpadding: 15px;\n}\n\n.single--todo.high .todo--priority,\n.single--todo.low .todo--priority,\n.single--todo.medium .todo--priority,\n.due--date {\n\tpadding: 2px 8px;\n\tborder-radius: 6px;\n\tmargin-left: 15px;\n\tcolor: #6b7280;\n\tborder: 1px solid;\n}\n\n.single--todo.high .todo--priority,\n.single--todo.high .due--date {\n\tbackground: #fee2e2;\n\tborder-color: #fecaca;\n}\n\n.single--todo.medium .todo--priority,\n.single--todo.medium .due--date {\n\tbackground: #fefce8;\n\tborder-color: #fef08a;\n}\n\n.single--todo.low .todo--priority,\n.single--todo.low .due--date {\n\tbackground: #eff6ff;\n\tborder-color: #a5b4fc;\n}\n\n.due--date {\n\tmargin-left: 5px;\n}\n\n.due--date:empty,\n.has--no-priority .todo--priority {\n\tdisplay: none;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body.dash-todo .update-nag.notice.notice-warning.inline {\n\tdisplay: none;\n}\n\n.dash-todo-header {\n\tbackground: #fff;\n\tborder-bottom: 1px solid #dcdcde;\n\tmargin: 0 0 2rem;\n\ttext-align: center;\n}\n\n.dash-todo-header .dash-todo-title-section {\n\talign-items: center;\n\tclear: both;\n\tdisplay: flex;\n\tjustify-content: center;\n\tpadding-top: 8px;\n}\n\n.dash-todo-header .dash-todo-title-section h1 {\n\tdisplay: inline-block;\n\tfont-size: 23px;\n\tfont-weight: 600;\n\tline-height: 1.3;\n\tmargin: 0 0.8rem 1rem;\n\tpadding: 9px 0 4px;\n}\n\n.dash-todo #wpcontent,\n.dash-todo.auto-fold #wpcontent {\n\tpadding-left: 0;\n}\n\n.dash-todo .dash-todo-layout .dash-todo-layout-body {\n\tmargin: 0 auto;\n\tmax-width: 1000px;\n}\n\n.no-js {\n\ttext-align: center;\n}\n\n#TodoApp .components-checkbox-control .components-base-control__field {\n\tdisplay: flex;\n}\n\n#TodoApp .components-checkbox-control {\n\tmax-width: calc(100% - 260px);\n}\n\n#TodoApp .has--no-priority.has--no-due-date .components-checkbox-control {\n\tmax-width: calc(100% - 36px);\n}\n\n.completed label,\n.completed .due--date,\n.completed .todo--priority {\n\tcolor: gray;\n\t-webkit-text-decoration: line-through;\n\ttext-decoration: line-through;\n}\n\n.components-checkbox-control .components-base-control__help {\n\tmargin-left: 30px;\n}\n\n.completed .due--date,\n.completed .todo--priority {\n\topacity: 0.7;\n}\n\n.single--todo .delete {\n\tdisplay: none;\n}\n\n.single--todo:hover .delete {\n\tdisplay: inherit;\n\tmargin-bottom: 8px;\n}\n\n#dash_todo_admin_widget .dash-todo-header {\n\tdisplay: none;\n}\n\n#dash_todo_admin_widget .components-card {\n\tbox-shadow: none;\n}\n\n.dropdown-due-date .components-popover__content {\n\tmin-width: 150px;\n\tpadding: 15px;\n}\n\n.single--todo.high .todo--priority,\n.single--todo.low .todo--priority,\n.single--todo.medium .todo--priority,\n.due--date {\n\tpadding: 2px 8px;\n\tborder-radius: 6px;\n\tmargin-left: 15px;\n\tcolor: #6b7280;\n\tborder: 1px solid;\n}\n\n.single--todo.high .todo--priority,\n.single--todo.high .due--date {\n\tbackground: #fee2e2;\n\tborder-color: #fecaca;\n}\n\n.single--todo.medium .todo--priority,\n.single--todo.medium .due--date {\n\tbackground: #fefce8;\n\tborder-color: #fef08a;\n}\n\n.single--todo.low .todo--priority,\n.single--todo.low .due--date {\n\tbackground: #eff6ff;\n\tborder-color: #a5b4fc;\n}\n\n.due--date {\n\tmargin-left: 5px;\n}\n\n.due--date:empty,\n.has--no-priority .todo--priority {\n\tdisplay: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -397,6 +397,7 @@ __webpack_require__.r(__webpack_exports__);
   const dueDate = (0,_functions__WEBPACK_IMPORTED_MODULE_3__.formatDate)((0,_functions__WEBPACK_IMPORTED_MODULE_3__.stripTag)(due));
   const hasPriority = priority !== 0 ? 'has--priority' : 'has--no-priority';
   const hasDueDate = dueDate !== '' ? 'has--due-date' : 'has--no-due-date';
+  const completedClass = isChecked ? 'completed' : 'incomplete';
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(() => {
     if (isMounted.current) {
       _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_2___default()({
@@ -420,12 +421,12 @@ __webpack_require__.r(__webpack_exports__);
   };
   return /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.__experimentalHStack, {
     alignment: "topLeft",
-    className: `single--todo ${priorityClass.toLowerCase()} ${hasPriority} ${hasDueDate}`
+    className: `single--todo ${completedClass}  ${priorityClass.toLowerCase()} ${hasPriority} ${hasDueDate}`
   }, /*#__PURE__*/React.createElement(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__.CheckboxControl, {
     label: `${title}`,
     checked: isChecked,
-    onChange: setChecked,
-    className: isChecked ? 'completed' : 'incomplete'
+    onChange: setChecked
+    // className={isChecked ? 'completed' : 'incomplete'}
   }), /*#__PURE__*/React.createElement("span", {
     className: "todo--priority"
   }, priorityClass), /*#__PURE__*/React.createElement("span", {
@@ -1153,7 +1154,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("81d7f7dbe45873258942")
+/******/ 		__webpack_require__.h = () => ("6201126a524fe348dfd1")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/global */
