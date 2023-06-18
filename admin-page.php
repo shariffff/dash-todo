@@ -107,19 +107,13 @@ add_action('admin_enqueue_scripts', function () {
 });
 function enqueue_scripts_from_asset_file()
 {
-	if (!$manifest = realpath(__DIR__ . '/dist/entrypoints.json')) {
-		throw new \Exception('Example: you must run `yarn build` before using this plugin.');
+	$script_asset_path = dirname(DASH_TODO_PLUGIN_FILE) . "/build/index.asset.php";
+	if (file_exists($script_asset_path)) {
+		$script_asset = include $script_asset_path;
+		$script_dependencies = $script_asset['dependencies'] ?? [];
+
+		wp_enqueue_script("dash-todo", plugins_url("build/index.js", DASH_TODO_PLUGIN_FILE), $script_dependencies, DASH_TODO_PLUGIN_VERSION, true);
+
+		wp_enqueue_style("dash-todo", plugins_url("build/index.css", DASH_TODO_PLUGIN_FILE), ['wp-components'], DASH_TODO_PLUGIN_VERSION, false);
 	}
-
-	$entry_points = json_decode(file_get_contents($manifest));
-
-	wp_enqueue_script("dash-todo", plugins_url("dist/js/app.js", DASH_TODO_PLUGIN_FILE), $entry_points->app->dependencies, DASH_TODO_PLUGIN_VERSION, true);
-
-
-	$style_dependencies = [];
-
-	if (in_array('wp-components', $entry_points->app->dependencies, true)) {
-		$style_dependencies[] = 'wp-components';
-	}
-	wp_enqueue_style("dash-todo", plugins_url("dist/css/app.css", DASH_TODO_PLUGIN_FILE), $style_dependencies, DASH_TODO_PLUGIN_VERSION, false);
 }

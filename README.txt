@@ -4,7 +4,7 @@ Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 5.9
 Tested up to: 6.2
-Stable tag: 1.0.9
+Stable tag: 1.1.0
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,8 +27,11 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 
 1. Screenshot of Dash Todo plugins interface.
 
-
 == Changelog ==
+= 1.1.0 =
+* Feature: Ability to edit existing todo item's text.
+* Fix: UI inconsistency
+
 = 1.0.9 =
 * Updated: Container width is extended
 * Fix: UI Fixed

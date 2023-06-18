@@ -31,14 +31,14 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 	margin: 0 auto;
 	max-width: 1000px;
 }
-.no-js {
+body.dash-todo .no-js {
 	text-align: center;
 }
 #TodoApp .components-checkbox-control .components-base-control__field {
 	display: flex;
 }
 #TodoApp .components-checkbox-control {
-	max-width: calc(100% - 260px);
+	max-width: calc(100% - 335px);
 }
 #TodoApp .has--no-priority.has--no-due-date .components-checkbox-control {
 	max-width: calc(100% - 36px);
@@ -52,16 +52,15 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 .components-checkbox-control .components-base-control__help {
 	margin-left: 30px;
 }
-.completed .due--date,
-.completed .todo--priority {
-	opacity: 0.7;
+.single--todo.completed {
+	opacity: 0.6;
 }
 
 .single--todo .delete {
-	display: none;
+	visibility: hidden;
 }
 .single--todo:hover .delete {
-	display: inherit;
+	visibility: visible;
 	margin-bottom: 8px;
 }
 
