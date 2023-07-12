@@ -1,28 +1,10 @@
 body.dash-todo .update-nag.notice.notice-warning.inline {
 	display: none;
 }
-
-.dash-todo-header {
+body.dash-todo {
 	background: #fff;
-	border-bottom: 1px solid #dcdcde;
-	margin: 0 0 2rem;
-	text-align: center;
 }
-.dash-todo-header .dash-todo-title-section {
-	align-items: center;
-	clear: both;
-	display: flex;
-	justify-content: center;
-	padding-top: 8px;
-}
-.dash-todo-header .dash-todo-title-section h1 {
-	display: inline-block;
-	font-size: 23px;
-	font-weight: 600;
-	line-height: 1.3;
-	margin: 0 0.8rem 1rem;
-	padding: 9px 0 4px;
-}
+
 .dash-todo #wpcontent,
 .dash-todo.auto-fold #wpcontent {
 	padding-left: 0;
@@ -30,6 +12,7 @@ body.dash-todo .update-nag.notice.notice-warning.inline {
 .dash-todo .dash-todo-layout .dash-todo-layout-body {
 	margin: 0 auto;
 	max-width: 1000px;
+	margin-top: 50px;
 }
 body.dash-todo .no-js {
 	text-align: center;
@@ -107,4 +90,7 @@ body.dash-todo .no-js {
 .due--date:empty,
 .has--no-priority .todo--priority {
 	display: none;
+}
+.dash-todo-modal .components-modal__content {
+	margin-top: 32px;
 }

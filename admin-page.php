@@ -31,7 +31,7 @@ function todo_post_type() {
 add_action( 'admin_menu', $n( 'admin_menu' ), 100 );
 function admin_menu() {
 	global $n;
-	$hook_name = add_submenu_page(
+	$hook_name = \add_submenu_page(
 		'index.php',
 		__( 'Todo', 'dash-todo' ),
 		__( 'Todo', 'dash-todo' ),
@@ -108,4 +108,36 @@ function enqueue_scripts_from_asset_file() {
 
 		wp_enqueue_style( "dash-todo", plugins_url( "build/index.css", DASH_TODO_PLUGIN_FILE ), [ 'wp-components' ], DASH_TODO_PLUGIN_VERSION, false );
 	}
+}
+
+
+function create_demo_todo_items() {
+	$installed = get_option( 'dash_todo_installed' );
+	if ( $installed ) {
+		return;
+	}
+	$initial_todo_items = [ 
+		[ 
+			'post_title' => 'Install and Activate Dash Todo',
+			'post_status' => 'publish',
+			'post_type' => 'todo',
+			'post_excerpt' => date( "F j, Y" ),
+			'menu_order' => 3
+
+		],
+		[ 
+			'post_title' => 'Create a new Todo',
+			'post_status' => 'pending',
+			'post_type' => 'todo',
+			'post_excerpt' => date( "F j, Y" ),
+			'menu_order' => 1
+
+		]
+	];
+
+	update_option( 'dash_todo_installed', time() );
+	foreach ( $initial_todo_items as $item ) {
+		wp_insert_post( $item );
+	}
+
 }

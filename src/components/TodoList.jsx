@@ -38,7 +38,7 @@ export default function ({ items, deleted }) {
 			.catch((err) => console.log(err?.message));
 	};
 	return (
-		<Card>
+		<Card style={{ boxShadow: 'none' }}>
 			<CardBody>
 				<VStack>
 					{items.map(({ id, title, status, menu_order, excerpt }) => (
@@ -57,7 +57,12 @@ export default function ({ items, deleted }) {
 					))}
 				</VStack>
 				{isOpen && (
-					<Modal style={{ minWidth: '600px' }} onRequestClose={closeModal}>
+					<Modal
+						className="dash-todo-modal"
+						style={{ minWidth: '600px' }}
+						onRequestClose={closeModal}
+						isDismissible={false}
+					>
 						<form onSubmit={handleFormSubmit}>
 							<TextareaControl
 								required
@@ -71,17 +76,7 @@ export default function ({ items, deleted }) {
 								}
 								value={modalData.title}
 							/>
-							{/* <RadioControl
-								label="Priority"
-								onChange={function noRefCheck() {}}
-								options={[
-									{ label: 'High', value: '3' },
-									{ label: 'Medium', value: '2' },
-									{ label: 'Low', value: '1' },
-									{ label: 'None', value: '0' },
-								]}
-								selected={modalData.priority.toString()}
-							/> */}
+
 							<Button type="submit" variant="primary">
 								Update
 							</Button>

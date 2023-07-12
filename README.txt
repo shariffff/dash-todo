@@ -28,6 +28,8 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 1. Screenshot of Dash Todo plugins interface.
 
 == Changelog ==
+= 1.1.1 =
+* Update: More focusing UI
 = 1.1.0 =
 * Feature: Ability to edit existing todo item's text.
 * Fix: UI inconsistency
