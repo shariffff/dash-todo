@@ -18,48 +18,47 @@ namespace DashTodo;
 
 
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define('DASH_TODO_PLUGIN_VERSION', '1.1.0');
-define('DASH_TODO_PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('DASH_TODO_PLUGIN_URL', plugins_url('/', __FILE__));
-define('DASH_TODO_PLUGIN_FILE', __FILE__);
-define('DASH_TODO_PLUGIN_DIR', __DIR__);
+define( 'DASH_TODO_PLUGIN_VERSION', '1.1.0' );
+define( 'DASH_TODO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'DASH_TODO_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
+define( 'DASH_TODO_PLUGIN_FILE', __FILE__ );
+define( 'DASH_TODO_PLUGIN_DIR', __DIR__ );
 
 
 
 require_once 'admin-page.php';
 
 
-register_activation_hook(__FILE__, __NAMESPACE__ . '\\create_demo_todo_items');
-function create_demo_todo_items()
-{
-	$installed = get_option('dash_todo_installed');
-	$initial_todo_items = [
-		[
-			'post_title'    => 'Install and Activate Dash Todo',
-			'post_status'   => 'publish',
-			'post_type'   => 'todo',
-			'post_excerpt' => date("F j, Y"),
+register_activation_hook( __FILE__, __NAMESPACE__ . '\\create_demo_todo_items' );
+function create_demo_todo_items() {
+	$installed = get_option( 'dash_todo_installed' );
+	$initial_todo_items = [ 
+		[ 
+			'post_title' => 'Install and Activate Dash Todo',
+			'post_status' => 'publish',
+			'post_type' => 'todo',
+			'post_excerpt' => date( "F j, Y" ),
 			'menu_order' => 3
 
 		],
-		[
-			'post_title'    => 'Create a new Todo',
-			'post_status'   => 'pending',
-			'post_type'   => 'todo',
-			'post_excerpt' => date("F j, Y"),
+		[ 
+			'post_title' => 'Create a new Todo',
+			'post_status' => 'pending',
+			'post_type' => 'todo',
+			'post_excerpt' => date( "F j, Y" ),
 			'menu_order' => 1
 
 		]
 	];
 
-	if (!$installed) {
-		update_option('dash_todo_installed', time());
-		foreach ($initial_todo_items as $item) {
-			wp_insert_post($item);
+	if ( ! $installed ) {
+		update_option( 'dash_todo_installed', time() );
+		foreach ( $initial_todo_items as $item ) {
+			wp_insert_post( $item );
 		}
 	}
 }
