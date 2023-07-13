@@ -29,6 +29,10 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 
 ## Changelog
 
+### 1.1.1
+
+- Updated: More focusing UI
+
 ### 1.1.0
 
 - Feature: Ability to edit existing todo item's text.
