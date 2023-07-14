@@ -10,7 +10,7 @@
  * Author URI:       https://sharifff.com
  * Version:           1.1.1
  * Requires at least: 5.9
- * Tested up to:      6.2
+ * Tested up to:      6.3
  * Requires PHP:      7.4
  */
 
@@ -23,11 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'DASH_TODO_PLUGIN_VERSION', '1.1.1' );
-define( 'DASH_TODO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'DASH_TODO_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'DASH_TODO_PLUGIN_FILE', __FILE__ );
-define( 'DASH_TODO_PLUGIN_DIR', __DIR__ );
 
-require_once 'admin-page.php';
+require_once __DIR__ . '/admin-page.php';
 
 register_activation_hook( __FILE__, __NAMESPACE__ . '\\create_demo_todo_items' );
