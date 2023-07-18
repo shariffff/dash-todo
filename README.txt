@@ -1,5 +1,5 @@
 === Dash Todo ===
-Contributors: smeunus,ashikrnhq04
+Contributors: smeunus
 Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 5.9

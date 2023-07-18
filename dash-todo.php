@@ -16,15 +16,14 @@
 
 namespace DashTodo;
 
+defined( 'ABSPATH' ) or exit;
 
-
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
 
 define( 'DASH_TODO_PLUGIN_VERSION', '1.1.1' );
 define( 'DASH_TODO_PLUGIN_FILE', __FILE__ );
 
-require_once __DIR__ . '/admin-page.php';
+require_once __DIR__ . '/dash-todo-class.php';
 
-register_activation_hook( __FILE__, __NAMESPACE__ . '\\create_demo_todo_items' );
+Dash_Todo_Class::get_instance();
+
+register_activation_hook( __FILE__, fn() => Dash_Todo_Class::sample_todo_items() );
