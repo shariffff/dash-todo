@@ -2,11 +2,11 @@
 
 A Todo management plugin for WordPress site admins. Stay consistent and never forget anything.
 
-**Contributors:** [smeunus](https://profiles.wordpress.org/smeunus),[ashikrnhq04](https://profiles.wordpress.org/ashikrnhq04)
+**Contributors:** [smeunus](https://profiles.wordpress.org/smeunus)
 **Tags:** [todo](https://wordpress.org/plugins/tags/todo),[dashboard](https://wordpress.org/plugins/tags/dashboard),[widget](https://wordpress.org/plugins/tags/widget),[productivity](https://wordpress.org/plugins/tags/productivity),[utility](https://wordpress.org/plugins/tags/utility)
 **Requires at least:** 5.9
 **Tested up to:** 6.2
-**Stable tag:** 1.1.0
+**Stable tag:** 1.1.1
 **License:** [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 **Donate link:** https://sharifff.com/
 **Requires PHP:** 7.4
