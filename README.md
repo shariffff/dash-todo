@@ -1,5 +1,7 @@
 # Dash Todo
 
+![Alt text](.wordpress-org/screenshot-1.png?raw=true 'Optional Title')
+
 A Todo management plugin for WordPress site admins. Stay consistent and never forget anything.
 
 **Contributors:** [smeunus](https://profiles.wordpress.org/smeunus)
