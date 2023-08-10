@@ -94,3 +94,7 @@ body.dash-todo .no-js {
 .dash-todo-modal .components-modal__content {
 	margin-top: 32px;
 }
+.dash-todo-modal textarea,
+.dash-todo .single--todo label {
+	font-size: 15px;
+}

@@ -65,7 +65,7 @@ export default function ({ created }) {
 						value={todo}
 						onKeyDown={handleKeyDown}
 						autoComplete="off"
-						style={{ border: 'none' }}
+						style={{ fontSize: 15 }}
 					/>
 					<Flex align="center">
 						<FlexBlock>

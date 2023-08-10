@@ -31,6 +31,10 @@ I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free
 
 ## Changelog
 
+### 1.1.2
+
+- Fix: UI inconsistency
+
 ### 1.1.1
 
 - Updated: More focusing UI

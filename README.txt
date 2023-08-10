@@ -2,9 +2,9 @@
 Contributors: smeunus
 Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
-Requires at least: 5.9
+Requires at least: 6.0
 Tested up to: 6.3
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,13 +21,15 @@ You can manage the Todo from *Dashboard -> Todo* or from the *Dashboard widget*.
 = Why todo items are loading slowly? =
 It depends on the site's REST API response. I'm trying to optimize it as much as possible.
 = Where to report bugs or suggest improvements? =
-I'm managing the plugin here: https://github.com/shariffff/dash-todo . Feel free to create issues. I'll try my best to help.
+You can create issues on [Github] (https://github.com/shariffff/dash-todo)
 
 == Screenshots ==
 
 1. Screenshot of Dash Todo plugins interface.
 
 == Changelog ==
+= 1.1.2 =
+* Fix: UI inconsistency
 = 1.1.1 =
 * Update: More focusing UI
 = 1.1.0 =
