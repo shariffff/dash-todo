@@ -8,7 +8,7 @@
  * Author:            Sharif Mohammad Eunus
  * Author URI:       https://sharifff.com
  * Version:           1.1.2
- * Requires at least: 5.9
+ * Requires at least: 6.0
  * Tested up to:      6.5
  * Requires PHP:      7.4
  */
