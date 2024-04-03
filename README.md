@@ -1,4 +1,4 @@
-# Dash Todo
+# Simple Dashboard Todo
 
 ![Alt text](.wordpress-org/screenshot-1.png?raw=true 'Optional Title')
 
@@ -6,9 +6,9 @@ A Todo management plugin for WordPress site admins. Stay consistent and never fo
 
 **Contributors:** [smeunus](https://profiles.wordpress.org/smeunus)
 **Tags:** [todo](https://wordpress.org/plugins/tags/todo),[dashboard](https://wordpress.org/plugins/tags/dashboard),[widget](https://wordpress.org/plugins/tags/widget),[productivity](https://wordpress.org/plugins/tags/productivity),[utility](https://wordpress.org/plugins/tags/utility)
-**Requires at least:** 5.9
-**Tested up to:** 6.2
-**Stable tag:** 1.1.1
+**Requires at least:** 6.0
+**Tested up to:** 6.5
+**Stable tag:** 1.1.2
 **License:** [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 **Donate link:** https://sharifff.com/
 **Requires PHP:** 7.4
@@ -20,10 +20,6 @@ The Todo Plugin is a tool designed to enhance productivity and task management w
 You can manage the Todo from _Dashboard -> Todo_ or from the _Dashboard widget_.
 
 ## Frequently Asked Questions
-
-### Why todo items are loading slowly?
-
-It depends on the site's REST API response. I'm trying to optimize it as much as possible.
 
 ### Where to report bugs or suggest improvements?
 
