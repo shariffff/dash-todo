@@ -7,7 +7,7 @@
  * Domain Path:       /languages
  * Author:            Sharif Mohammad Eunus
  * Author URI:       https://sharifff.com
- * Version:           1.1.2
+ * Version:           1.1.3
  * Requires at least: 6.0
  * Tested up to:      6.5
  * Requires PHP:      7.4
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define( 'DASH_TODO_PLUGIN_VERSION', '1.1.1' );
+define( 'DASH_TODO_PLUGIN_VERSION', '1.1.3' );
 define( 'DASH_TODO_PLUGIN_FILE', __FILE__ );
 
 class Dash_Todo_Plugin {
