@@ -1,1 +1,106 @@
-body.dash-todo .update-nag.notice.notice-warning.inline{display:none}body.dash-todo{background:#fff}.dash-todo #wpcontent,.dash-todo.auto-fold #wpcontent{padding-left:0}.dash-todo .dash-todo-layout .dash-todo-layout-body{margin:50px auto 0;max-width:1000px}body.dash-todo .no-js{text-align:center}#TodoApp .components-checkbox-control .components-base-control__field{display:flex}#TodoApp .components-checkbox-control{max-width:calc(100% - 335px)}#TodoApp .has--no-priority.has--no-due-date .components-checkbox-control{max-width:calc(100% - 36px)}.completed .due--date,.completed .todo--priority,.completed label{color:gray;text-decoration:line-through}.components-checkbox-control .components-base-control__help{margin-left:30px}.single--todo.completed{opacity:.6}.single--todo .delete{visibility:hidden}.single--todo:hover .delete{margin-bottom:8px;visibility:visible}#dash_todo_admin_widget .dash-todo-header{display:none}#dash_todo_admin_widget .components-card{box-shadow:none}.dropdown-due-date .components-popover__content{min-width:150px;padding:15px}.due--date,.single--todo.high .todo--priority,.single--todo.low .todo--priority,.single--todo.medium .todo--priority{border:1px solid;border-radius:6px;color:#6b7280;margin-left:15px;padding:2px 8px}.single--todo.high .due--date,.single--todo.high .todo--priority{background:#fee2e2;border-color:#fecaca}.single--todo.medium .due--date,.single--todo.medium .todo--priority{background:#fefce8;border-color:#fef08a}.single--todo.low .due--date,.single--todo.low .todo--priority{background:#eff6ff;border-color:#a5b4fc}.due--date{margin-left:5px}.due--date:empty,.has--no-priority .todo--priority{display:none}.dash-todo-modal .components-modal__content{margin-top:32px}.dash-todo .single--todo label,.dash-todo-modal textarea{font-size:15px}
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/@wordpress/scripts/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/App.css ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+body.dash-todo .update-nag.notice.notice-warning.inline {
+	display: none;
+}
+body.dash-todo {
+	background: #fff;
+}
+
+.dash-todo #wpcontent,
+.dash-todo.auto-fold #wpcontent {
+	padding-left: 0;
+}
+.dash-todo .dash-todo-layout .dash-todo-layout-body {
+	margin: 0 auto;
+	max-width: 1000px;
+	margin-top: 50px;
+}
+body.dash-todo .no-js {
+	text-align: center;
+}
+#TodoApp .components-checkbox-control .components-base-control__field {
+	display: flex;
+}
+#TodoApp .components-checkbox-control {
+	max-width: calc(100% - 335px);
+}
+#TodoApp .has--no-priority.has--no-due-date .components-checkbox-control {
+	max-width: calc(100% - 36px);
+}
+.completed label,
+.completed .due--date,
+.completed .todo--priority {
+	color: gray;
+	text-decoration: line-through;
+}
+.components-checkbox-control .components-base-control__help {
+	margin-left: 30px;
+}
+.single--todo.completed {
+	opacity: 0.6;
+}
+
+.single--todo .delete {
+	visibility: hidden;
+}
+.single--todo:hover .delete {
+	visibility: visible;
+	margin-bottom: 8px;
+}
+
+#dash_todo_admin_widget .dash-todo-header {
+	display: none;
+}
+#dash_todo_admin_widget .components-card {
+	box-shadow: none;
+}
+.dropdown-due-date .components-popover__content {
+	min-width: 150px;
+	padding: 15px;
+}
+
+.single--todo.high .todo--priority,
+.single--todo.low .todo--priority,
+.single--todo.medium .todo--priority,
+.due--date {
+	padding: 2px 8px;
+	border-radius: 6px;
+	margin-left: 15px;
+	color: #6b7280;
+	border: 1px solid;
+}
+
+.single--todo.high .todo--priority,
+.single--todo.high .due--date {
+	background: #fee2e2;
+	border-color: #fecaca;
+}
+.single--todo.medium .todo--priority,
+.single--todo.medium .due--date {
+	background: #fefce8;
+	border-color: #fef08a;
+}
+.single--todo.low .todo--priority,
+.single--todo.low .due--date {
+	background: #eff6ff;
+	border-color: #a5b4fc;
+}
+.due--date {
+	margin-left: 5px;
+}
+.due--date:empty,
+.has--no-priority .todo--priority {
+	display: none;
+}
+.dash-todo-modal .components-modal__content {
+	margin-top: 32px;
+}
+.dash-todo-modal textarea,
+.dash-todo .single--todo label {
+	font-size: 15px;
+}
+
+
+/*# sourceMappingURL=index.css.map*/

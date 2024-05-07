@@ -78,14 +78,19 @@ export default function ({ created }) {
 										aria-expanded={isOpen}
 										icon="calendar-alt"
 									>
-										{date && new Date(date)?.getDate()?.toString()}
+										{date &&
+											new Date(date)
+												?.getDate()
+												?.toString()}
 									</Button>
 								)}
 								renderContent={() => (
 									<DatePicker
 										style={{ padding: 10 }}
 										currentDate={date}
-										onChange={(newDate) => setDate(newDate)}
+										onChange={(newDate) =>
+											setDate(newDate)
+										}
 									/>
 								)}
 							/>
@@ -99,7 +104,8 @@ export default function ({ created }) {
 										aria-expanded={isOpen}
 										icon="flag"
 									>
-										{priority !== '0' && priorityLabel(priority)}
+										{priority !== '0' &&
+											priorityLabel(priority)}
 									</Button>
 								)}
 								renderContent={() => (
@@ -113,13 +119,18 @@ export default function ({ created }) {
 											{ label: 'Low', value: '1' },
 											{ label: 'None', value: '0' },
 										]}
-										onChange={(value) => setPriority(value)}
+										onChange={(value) =>
+											setPriority(value)
+										}
 									/>
 								)}
 							/>
 						</FlexBlock>
 
-						<Button variant="tertiary" onClick={resetDatePriority}>
+						<Button
+							variant="tertiary"
+							onClick={resetDatePriority}
+						>
 							Reset
 						</Button>
 					</Flex>
