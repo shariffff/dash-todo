@@ -121,12 +121,12 @@ export default function ({ items, deleted }) {
                   </ToggleGroupControl>
 
                   <DatePicker
-                    currentDate={
+                    currentDate={modalData.due ?
                       new Date(
                         stripTag(modalData.due)
                           .trim()
                           .toString()
-                      )
+                      ) : null
                     }
                     onChange={(newDate) =>
                       setModalData({

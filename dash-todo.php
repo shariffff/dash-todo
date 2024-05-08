@@ -7,7 +7,7 @@
  * Domain Path:       /languages
  * Author:            Sharif Mohammad Eunus
  * Author URI:       https://sharifff.com
- * Version:           1.1.3
+ * Version:           1.1.4
  * Requires at least: 6.0
  * Tested up to:      6.5
  * Requires PHP:      7.4
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define( 'DASH_TODO_PLUGIN_VERSION', '1.1.3' );
+define( 'DASH_TODO_PLUGIN_VERSION', '1.1.4' );
 define( 'DASH_TODO_PLUGIN_FILE', __FILE__ );
 
 class Dash_Todo_Plugin {
@@ -46,14 +46,14 @@ class Dash_Todo_Plugin {
 		register_post_type(
 			'todo',
 			[ 
-				'labels' => [ 
-					'name' => __( 'Todo', 'dash-todo' ),
+				'labels'       => [ 
+					'name'          => __( 'Todo', 'dash-todo' ),
 					'singular_name' => __( 'Todo', 'dash-todo' )
 				],
-				'supports' => [ 'title', 'page-attributes', 'excerpt' ],
-				'public' => false,
-				'has_archive' => true,
-				'show_ui' => false,
+				'supports'     => [ 'title', 'page-attributes', 'excerpt' ],
+				'public'       => false,
+				'has_archive'  => true,
+				'show_ui'      => false,
 				'show_in_rest' => true,
 			]
 		);
@@ -109,7 +109,7 @@ class Dash_Todo_Plugin {
 	public function frontend_assets() {
 		$script_asset_path = dirname( DASH_TODO_PLUGIN_FILE ) . "/build/index.asset.php";
 		if ( file_exists( $script_asset_path ) ) {
-			$script_asset = include $script_asset_path;
+			$script_asset        = include $script_asset_path;
 			$script_dependencies = $script_asset['dependencies'] ?? [];
 
 			wp_enqueue_script( "dash-todo", plugins_url( "build/index.js", DASH_TODO_PLUGIN_FILE ), $script_dependencies, DASH_TODO_PLUGIN_VERSION, true );
@@ -137,19 +137,19 @@ class Dash_Todo_Plugin {
 		}
 		$initial_todo_items = [ 
 			[ 
-				'post_title' => 'Install and Activate Dash Todo',
-				'post_status' => 'publish',
-				'post_type' => 'todo',
+				'post_title'   => 'Install and Activate Dash Todo',
+				'post_status'  => 'publish',
+				'post_type'    => 'todo',
 				'post_excerpt' => date( "F j, Y" ),
-				'menu_order' => 3
+				'menu_order'   => 3
 
 			],
 			[ 
-				'post_title' => 'Create a new Todo',
-				'post_status' => 'pending',
-				'post_type' => 'todo',
+				'post_title'   => 'Create a new Todo',
+				'post_status'  => 'pending',
+				'post_type'    => 'todo',
 				'post_excerpt' => date( "F j, Y" ),
-				'menu_order' => 1
+				'menu_order'   => 1
 
 			]
 		];

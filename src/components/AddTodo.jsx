@@ -5,14 +5,12 @@ import {
 	Button,
 	DatePicker,
 	Dropdown,
-	RadioControl,
 	Flex,
-	FlexBlock,
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-
-import { priorityLabel } from '../functions';
 
 export default function ({ created }) {
 	const [date, setDate] = useState();
@@ -65,10 +63,10 @@ export default function ({ created }) {
 						value={todo}
 						onKeyDown={handleKeyDown}
 						autoComplete="off"
-						style={{ fontSize: 15 }}
+						style={{ fontSize: 15, minHeight: 36 }}
 					/>
-					<Flex align="center">
-						<FlexBlock>
+					<Flex>
+						<Flex justify='flex-start' align='start'>
 							<Dropdown
 								popoverProps={{ placement: 'bottom-start' }}
 								renderToggle={({ isOpen, onToggle }) => (
@@ -77,6 +75,7 @@ export default function ({ created }) {
 										onClick={onToggle}
 										aria-expanded={isOpen}
 										icon="calendar-alt"
+										style={{ backgroundColor: 'rgba(56, 88, 233, 0.4)', minWidth: 64 }}
 									>
 										{date &&
 											new Date(date)
@@ -94,38 +93,36 @@ export default function ({ created }) {
 									/>
 								)}
 							/>
-							<Dropdown
-								contentClassName="dropdown-due-date"
-								popoverProps={{ placement: 'bottom-start' }}
-								renderToggle={({ isOpen, onToggle }) => (
-									<Button
-										variant="tertiary"
-										onClick={onToggle}
-										aria-expanded={isOpen}
-										icon="flag"
-									>
-										{priority !== '0' &&
-											priorityLabel(priority)}
-									</Button>
-								)}
-								renderContent={() => (
-									<RadioControl
-										style={{}}
-										label="Priority"
-										selected={priority}
-										options={[
-											{ label: 'High', value: '3' },
-											{ label: 'Medium', value: '2' },
-											{ label: 'Low', value: '1' },
-											{ label: 'None', value: '0' },
-										]}
-										onChange={(value) =>
-											setPriority(value)
-										}
-									/>
-								)}
-							/>
-						</FlexBlock>
+
+							<ToggleGroupControl
+								isBlock
+								hideLabelFromVision
+								label="Priority"
+								value={priority}
+								onChange={(value) =>
+									setPriority(value)
+								}
+							>
+								<ToggleGroupControlOption
+									value="3"
+									label="High"
+								/>
+								<ToggleGroupControlOption
+									value="2"
+									label="Medium"
+								/>
+								<ToggleGroupControlOption
+									value="1"
+									label="Low"
+								/>
+								<ToggleGroupControlOption
+									value="0"
+									label="None"
+								/>
+							</ToggleGroupControl>
+						</Flex>
+
+
 
 						<Button
 							variant="tertiary"
@@ -133,6 +130,8 @@ export default function ({ created }) {
 						>
 							Reset
 						</Button>
+
+
 					</Flex>
 				</form>
 			</CardBody>

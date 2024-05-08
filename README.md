@@ -7,8 +7,8 @@ A Todo management plugin for WordPress site admins. Stay consistent and never fo
 **Contributors:** [smeunus](https://profiles.wordpress.org/smeunus)
 **Tags:** [todo](https://wordpress.org/plugins/tags/todo),[dashboard](https://wordpress.org/plugins/tags/dashboard),[widget](https://wordpress.org/plugins/tags/widget),[productivity](https://wordpress.org/plugins/tags/productivity),[utility](https://wordpress.org/plugins/tags/utility)
 **Requires at least:** 6.0
-**Tested up to:** 6.5
-**Stable tag:** 1.1.3
+**Tested up to:** 6.5.3
+**Stable tag:** 1.1.4
 **License:** [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 **Donate link:** https://sharifff.com/
 **Requires PHP:** 7.4
