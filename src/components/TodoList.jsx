@@ -16,8 +16,9 @@ import { useState } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
 import { stripTag } from '../functions';
 import TodoItem from './TodoItem';
+import { useQuery } from '@tanstack/react-query'
 
-export default function ({ items, deleted }) {
+export default function TodoList() {
   const [modalData, setModalData] = useState({});
   const [isOpen, setOpen] = useState(false);
   const openModal = (data) => {
@@ -28,8 +29,6 @@ export default function ({ items, deleted }) {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // set a loading state - disable the button
-    // update the todo
     apiFetch({
       path: `/wp/v2/todo/${modalData.id}`,
       method: 'PUT',
@@ -40,29 +39,37 @@ export default function ({ items, deleted }) {
       },
     })
       .then(() => {
-        deleted(true); // refetch the items
         closeModal();
       })
       .catch((err) => console.log(err?.message));
   };
+  const _q = new URLSearchParams({
+    _fields: 'id,title,status,menu_order,excerpt',
+    status: 'pending,publish',
+    per_page: 100,
+    orderby: 'menu_order',
+  });
+
+  const query = useQuery({
+    queryKey: ['todos'],
+    queryFn: () => apiFetch({ path: `/wp/v2/todo?${_q}` })
+  })
   return (
     <Card style={{ boxShadow: 'none' }}>
       <CardBody>
         <VStack>
-          {items.map(
+          {query.data?.map(
             ({ id, title, status, menu_order, excerpt }) => (
-
               <TodoItem
                 key={id}
                 title={decodeEntities(title.rendered)}
                 id={id}
                 status={status}
-                deleted={deleted}
+                // deleted={deleted}
                 due={excerpt.rendered}
                 priority={menu_order}
                 openModal={openModal}
               />
-
             )
           )}
         </VStack>

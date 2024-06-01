@@ -1,4 +1,4 @@
-export const priorityLabel = ( number ) => {
+export const priorityLabel = (number) => {
 	const priorities = {
 		0: 'No Priority',
 		1: 'Low',
@@ -6,9 +6,9 @@ export const priorityLabel = ( number ) => {
 		3: 'High',
 	};
 
-	return priorities[ number ] || 'No Priority';
+	return priorities[number] || 'No Priority';
 };
-export const formatDate = ( date ) => {
+export const formatDate = (date) => {
 	const options = {
 		weekday: 'long',
 		day: 'numeric',
@@ -16,12 +16,12 @@ export const formatDate = ( date ) => {
 	};
 
 	return date
-		? new Date( date.trim() ).toLocaleString( 'en-US', options )
+		? new Date(date.trim()).toLocaleString('en-US', options)
 		: '';
 };
 
-export const stripTag = ( htmlString ) => {
-	const div = document.createElement( 'div' );
+export const stripTag = (htmlString) => {
+	const div = document.createElement('div');
 	div.innerHTML = htmlString;
 	return div.textContent || div.innerText || '';
 };

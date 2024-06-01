@@ -20,14 +20,18 @@
 		"test:unit": "wp-scripts test-unit-js"
 	},
 	"dependencies": {
+		"@tanstack/react-query": "^5.40.0",
+		"@tanstack/react-query-devtools": "^5.40.0",
 		"@wordpress/api-fetch": "^6.26.0",
 		"@wordpress/components": "^25.0.0",
 		"@wordpress/element": "^5.6.0",
 		"@wordpress/html-entities": "^3.31.0",
+		"@wordpress/url": "^4.0.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0"
 	},
 	"devDependencies": {
+		"@tanstack/eslint-plugin-query": "^5.35.6",
 		"@wordpress/scripts": "^26.6.0",
 		"webpack-cli": "^5.1.4",
 		"webpack-dev-server": "^4.15.1"

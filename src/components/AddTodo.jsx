@@ -11,28 +11,37 @@ import {
 } from '@wordpress/components';
 import { useState } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
-
-export default function ({ created }) {
+import {
+	useMutation,
+	useQueryClient,
+} from '@tanstack/react-query'
+export default function AddTodo() {
 	const [date, setDate] = useState();
 	const [todo, setTodo] = useState('');
 	const [priority, setPriority] = useState('0');
+
 	const createTodo = () => {
-		apiFetch({
+		mutation.mutate({
+			title: todo,
+			status: 'pending',
+			excerpt: date,
+			menu_order: priority,
+		})
+	}
+
+	const queryClient = useQueryClient()
+
+	const mutation = useMutation({
+		mutationFn: (newTodo) => apiFetch({
 			path: '/wp/v2/todo',
 			method: 'POST',
-			data: {
-				title: todo,
-				status: 'pending',
-				excerpt: date,
-				menu_order: priority,
-			},
-		})
-			.then(() => {
-				setTodo('');
-				created(true);
-			})
-			.catch((err) => console.log(err?.message));
-	};
+			data: newTodo,
+		}),
+		onSuccess: () => {
+			setTodo('')
+			queryClient.invalidateQueries('todos')
+		},
+	})
 	const handleKeyDown = (event) => {
 		if (event.key === 'Enter') {
 			handleFormSubmit(event);
@@ -53,7 +62,7 @@ export default function ({ created }) {
 	return (
 		<Card style={{ boxShadow: 'none' }}>
 			<CardBody>
-				<form onSubmit={handleFormSubmit}>
+				<form onSubmit={createTodo}>
 					<TextControl
 						autoFocus
 						label={'Add Todo item'}
