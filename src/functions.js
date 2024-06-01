@@ -25,3 +25,10 @@ export const stripTag = (htmlString) => {
 	div.innerHTML = htmlString;
 	return div.textContent || div.innerText || '';
 };
+
+export const queryString = new URLSearchParams({
+	_fields: 'id,title,status,menu_order,excerpt',
+	status: 'pending,publish',
+	per_page: 100,
+	orderby: 'menu_order',
+});

@@ -1,14 +1,17 @@
 import {
-	CheckboxControl,
-	Button,
-	__experimentalHStack as HStack,
 	Icon,
+	Button,
+	CheckboxControl,
+	__experimentalHStack as HStack,
 } from '@wordpress/components';
 import { useState, useEffect, useRef } from '@wordpress/element';
 import apiFetch from '@wordpress/api-fetch';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { stripTag, formatDate, priorityLabel } from '../functions';
+
 export default function TodoItem(props) {
-	const { title, id, status, deleted, priority, due, openModal } = props;
+
+	const { title, id, status, priority, due, openModal } = props;
 	const isMounted = useRef(false);
 	const [isChecked, setChecked] = useState(status === 'publish');
 
@@ -19,6 +22,7 @@ export default function TodoItem(props) {
 	const hasPriority = priority !== 0 ? 'has--priority' : 'has--no-priority';
 	const hasDueDate = dueDate !== '' ? 'has--due-date' : 'has--no-due-date';
 	const completedClass = isChecked ? 'completed' : 'incomplete';
+
 	useEffect(() => {
 		if (isMounted.current) {
 			apiFetch({
@@ -32,16 +36,21 @@ export default function TodoItem(props) {
 			isMounted.current = true;
 		}
 	}, [isChecked, setChecked]);
+
 	const deleteTodo = () => {
-		apiFetch({
+		mutation.mutate(id)
+	};
+	const queryClient = useQueryClient()
+
+	const mutation = useMutation({
+		mutationFn: (id) => apiFetch({
 			path: `/wp/v2/todo/${id}?force=true`,
 			method: 'DELETE',
-		})
-			.then(() => {
-				deleted(true);
-			})
-			.catch((err) => console.log(err?.message));
-	};
+		}),
+		onSuccess: () => {
+			queryClient.invalidateQueries('todos')
+		},
+	})
 	return (
 		<>
 			<HStack
@@ -77,7 +86,7 @@ export default function TodoItem(props) {
 						style={{ color: 'gray' }}
 					></Icon>
 				</Button>
-			</HStack>
+			</HStack >
 		</>
 	);
 }

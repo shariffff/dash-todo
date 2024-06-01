@@ -9,12 +9,14 @@ import {
 	__experimentalToggleGroupControl as ToggleGroupControl,
 	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
-import { useState } from '@wordpress/element';
-import apiFetch from '@wordpress/api-fetch';
 import {
 	useMutation,
 	useQueryClient,
 } from '@tanstack/react-query'
+import { useState } from '@wordpress/element';
+import apiFetch from '@wordpress/api-fetch';
+
+
 export default function AddTodo() {
 	const [date, setDate] = useState();
 	const [todo, setTodo] = useState('');
@@ -130,17 +132,12 @@ export default function AddTodo() {
 								/>
 							</ToggleGroupControl>
 						</Flex>
-
-
-
 						<Button
 							variant="tertiary"
 							onClick={resetDatePriority}
 						>
 							Reset
 						</Button>
-
-
 					</Flex>
 				</form>
 			</CardBody>

@@ -1,4 +1,3 @@
-import apiFetch from '@wordpress/api-fetch';
 import {
   Button,
   Card,
@@ -12,13 +11,19 @@ import {
   __experimentalToggleGroupControl as ToggleGroupControl,
   __experimentalToggleGroupControlOption as ToggleGroupControlOption,
 } from '@wordpress/components';
+
+import apiFetch from '@wordpress/api-fetch';
 import { useState } from '@wordpress/element';
 import { decodeEntities } from '@wordpress/html-entities';
-import { stripTag } from '../functions';
+
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+
+import { stripTag, queryString } from '../functions';
 import TodoItem from './TodoItem';
-import { useQuery } from '@tanstack/react-query'
+import Loading from './Loading';
 
 export default function TodoList() {
+
   const [modalData, setModalData] = useState({});
   const [isOpen, setOpen] = useState(false);
   const openModal = (data) => {
@@ -29,7 +34,12 @@ export default function TodoList() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    apiFetch({
+    mutation.mutate(modalData.id)
+  };
+  const queryClient = useQueryClient()
+
+  const mutation = useMutation({
+    mutationFn: (id) => apiFetch({
       path: `/wp/v2/todo/${modalData.id}`,
       method: 'PUT',
       data: {
@@ -37,27 +47,22 @@ export default function TodoList() {
         menu_order: modalData.priority,
         excerpt: modalData.due,
       },
-    })
-      .then(() => {
-        closeModal();
-      })
-      .catch((err) => console.log(err?.message));
-  };
-  const _q = new URLSearchParams({
-    _fields: 'id,title,status,menu_order,excerpt',
-    status: 'pending,publish',
-    per_page: 100,
-    orderby: 'menu_order',
-  });
+    }),
+    onSuccess: () => {
+      closeModal();
+      queryClient.invalidateQueries('todos')
+    },
+  })
 
   const query = useQuery({
     queryKey: ['todos'],
-    queryFn: () => apiFetch({ path: `/wp/v2/todo?${_q}` })
+    queryFn: () => apiFetch({ path: `/wp/v2/todo?${queryString}` })
   })
   return (
     <Card style={{ boxShadow: 'none' }}>
       <CardBody>
         <VStack>
+          {query.isLoading && <Loading />}
           {query.data?.map(
             ({ id, title, status, menu_order, excerpt }) => (
               <TodoItem
@@ -65,7 +70,6 @@ export default function TodoList() {
                 title={decodeEntities(title.rendered)}
                 id={id}
                 status={status}
-                // deleted={deleted}
                 due={excerpt.rendered}
                 priority={menu_order}
                 openModal={openModal}

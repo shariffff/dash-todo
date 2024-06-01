@@ -1,6 +1,5 @@
 import './App.css';
 import AddTodo from './components/AddTodo';
-import LoadingScreen from './components/Loading';
 import TodoList from './components/TodoList';
 import {
 	useQuery,
@@ -18,7 +17,6 @@ export default function App() {
 			<div className="dash-todo-layout">
 				<div className="dash-todo-layout-body hide-if-no-js">
 					<AddTodo />
-					<LoadingScreen />
 					<TodoList />
 				</div>
 			</div>
