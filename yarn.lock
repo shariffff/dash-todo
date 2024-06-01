@@ -3318,14 +3318,6 @@
     "@babel/runtime" "^7.16.0"
     remove-accents "^0.5.0"
 
-"@wordpress/url@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/@wordpress/url/-/url-4.0.0.tgz"
-  integrity sha512-eqOj2kH8azTrA7r3qIipPQuoghdMs1DzSwnjwt4Ja0BZvZLyaacL5p5p4+/nfALXgHuk3OnAsnkecevAlyTGgg==
-  dependencies:
-    "@babel/runtime" "^7.16.0"
-    remove-accents "^0.5.0"
-
 "@wordpress/warning@^2.35.0", "@wordpress/warning@^2.58.0":
   version "2.58.0"
   resolved "https://registry.npmjs.org/@wordpress/warning/-/warning-2.58.0.tgz"
