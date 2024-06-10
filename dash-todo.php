@@ -56,8 +56,8 @@ class Dash_Todo_Plugin {
 		add_action( 'init', array( $this, 'todo_cpt' ), 0 );
 		add_action( 'admin_menu', array( $this, 'menu' ), 100 );
 		add_action( 'wp_dashboard_setup', array( $this, 'admin_widget' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( __DIR__ ) . '/dash-todo.php', array( $this, 'plugin_link' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'widget_assets' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'plugin_link' ) );
 	}
 
 	/**
