@@ -89,7 +89,6 @@ export default function TodoList() {
 								<FlexBlock>
 									<TextareaControl
 										required
-										autoFocus
 										label={ 'Description' }
 										onChange={ ( value ) =>
 											setModalData( {

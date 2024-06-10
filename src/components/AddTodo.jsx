@@ -63,7 +63,6 @@ export default function AddTodo() {
 			<CardBody>
 				<form onSubmit={ createTodo }>
 					<TextControl
-						autoFocus
 						label={ 'Add Todo item' }
 						hideLabelFromVision
 						placeholder="Type here and press Enter ↵"
