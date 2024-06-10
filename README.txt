@@ -3,8 +3,8 @@ Contributors: smeunus
 Donate link: https://sharifff.com/
 Tags: todo, dashboard, widget, productivity, utility
 Requires at least: 6.0
-Tested up to: 6.5.3
-Stable tag: 1.1.4
+Tested up to: 6.5.4
+Stable tag: 1.1.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,8 @@ You can create issues here : https://github.com/shariffff/dash-todo
 2. Screenshot of Todo Item Update.
 
 == Changelog ==
+= 1.1.4 =
+* Code improvements
 = 1.1.4 =
 * Option to update priority and date.
 * Efficient UI to set priority.
