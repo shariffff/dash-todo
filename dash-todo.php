@@ -9,7 +9,7 @@
  * Author URI:       https://sharifff.com
  * Version:           1.1.5
  * Requires at least: 6.0
- * Tested up to:      6.5
+ * Tested up to:      6.8
  * Requires PHP:      7.4
  *
  * @package DashTodo
